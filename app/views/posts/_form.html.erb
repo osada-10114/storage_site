@@ -1,0 +1,57 @@
+<%= form_with(model: post, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :post_name %>
+    <%= form.text_field :post_name, id: :post_post_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_price %>
+    <%= form.number_field :total_price, id: :post_total_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :explanation %>
+    <%= form.text_field :explanation, id: :post_explanation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.number_field :category, id: :post_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material %>
+    <%= form.text_field :material, id: :post_material %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material_quantity %>
+    <%= form.number_field :material_quantity, id: :post_material_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tip %>
+    <%= form.text_area :tip, id: :post_tip %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reason %>
+    <%= form.text_area :reason, id: :post_reason %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
