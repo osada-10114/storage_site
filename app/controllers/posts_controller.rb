@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update]
 
   # GET /posts
   # GET /posts.json
@@ -69,6 +70,13 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:post_name, :total_price, :explanation, :category, :material, :material_quantity, :tip, :reason)
+      params.require(:post).permit(:post_name, :total_price, :explanation, :category, :material, :material_quantity, :tip, :reason, :user_id)
+    end
+
+    def correct_user
+      post = Post.find(params[:id])
+      if current_user.id != post.user.id
+        redirect_to root_path
+      end
     end
 end

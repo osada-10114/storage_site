@@ -14,8 +14,10 @@
   		<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% elsif admin_signed_in? %>
       管理者：<%= current_admin.nickname %>さんとしてログインしています
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
   	<% else %>
-  		<%= link_to "新規登録", new_user_registration_path %> | <%= link_to "ログイン", new_user_session_path %>
+  		<%= link_to "新規登録", new_user_registration_path %> | <%= link_to "ログイン", new_user_session_path %> | 
+      <%= link_to "管理者ログイン", new_admin_session_path %>
   	<% end %>
     <%= yield %>
   </body>
