@@ -11,11 +11,13 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find_by(id: params[:id])
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+    @post.post_images.build
   end
 
   # GET /posts/1/edit
@@ -70,7 +72,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:post_name, :total_price, :explanation, :category, :material, :material_quantity, :tip, :reason, :user_id)
+      params.require(:post).permit(:post_name, :total_price, :explanation, :category, :material, :material_quantity, :tip, :reason, :user_id, post_images_images: [])
     end
 
     def correct_user
