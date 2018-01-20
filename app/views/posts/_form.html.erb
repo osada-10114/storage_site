@@ -54,12 +54,8 @@
     <%= f.attachment_field :post_images_images, multiple: true %></p>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    ユーザーID
-    <%= f.collection_select :user_id, User.all, :id, :id %>
-  </div>
-  
+  ログインID：<%= current_user.id %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

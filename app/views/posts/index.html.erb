@@ -2,9 +2,11 @@
 
 <h1>Posts</h1>
 
+<%= paginate @posts %>
 <table>
   <thead>
     <tr>
+      <th>画像</th>
       <th>Post name</th>
       <th>Total price</th>
       <th>Explanation</th>
@@ -20,6 +22,15 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td>
+          <% if post.post_images.present? %>
+            <% post.post_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: '100x100' %>
+          <% end %>
+        </td>
         <td><%= link_to post.post_name, post_path(post) %></td>
         <td><%= post.total_price %></td>
         <td><%= post.explanation %></td>
@@ -28,10 +39,21 @@
         <td><%= post.material_quantity %></td>
         <td><%= post.tip %></td>
         <td><%= post.reason %></td>
+        <td>
+          <% if user_signed_in? %>
+            <% if post.user_id != current_user.id %>
+              <% if post.favorited_by? %>
+                <%= link_to "いいね解除", post_favorites_path(post), method: :delete %>
+              <% else %>
+                <%= link_to "いいね", post_favorites_path(post), method: :post %></td>
+              <% end %>
+            <% end %>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @posts %>
 
 <br>
 

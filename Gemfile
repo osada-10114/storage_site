@@ -69,3 +69,9 @@ gem 'refile-s3'
 
 # seed-fu
 gem 'seed-fu'
+
+# kaminari
+gem 'kaminari'
+
+# pry-rails
+gem 'pry-rails'
