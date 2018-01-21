@@ -6,6 +6,18 @@
       <% end %>
     </li>
     <li>
+    	<%= link_to follows_user_path(@user) do %>
+    		<div class="text">フォロー</div>
+    		<div class="num"><%= @user.followings.count %></div>
+    	<% end %>
+    </li>
+    <li>
+    	<%= link_to followers_user_path(@user) do %>
+    		<div class="text">フォロワー</div>
+    		<div class="num"><%= @user.followers.count %></div>
+    	<% end %>
+    </li>
+    <li>
       <%= link_to favorites_user_path(@user) do %>
         <div class="text">いいね一覧</div>
         <div class="num"><%= @user.favorites.count %></div>

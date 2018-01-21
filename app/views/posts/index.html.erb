@@ -46,6 +46,13 @@
             <%= link_to "いいね", post_favorites_path(post), method: :post %>
           <% end %>
         </td>
+        <td>
+          <% if post.user.followed_by? current_user %>
+            <%= link_to "フォロー解除", user_relationships_path(post.user), method: :delete %>
+          <% else %>
+            <%= link_to "フォロー", user_relationships_path(post.user), method: :post %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
