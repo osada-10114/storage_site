@@ -1,13 +1,13 @@
-<% @users.each do |u| %>
+<% @users.each do |user| %>
 	<div>
-		<%= link_to u.nickname, user_path(u) %>
-		<span>@<%= u.name %></span>
+		<%= link_to user.nickname, user_path(user) %>
+		<span>@<%= user.nickname %></span>
 	</div>
 	<div class="follow-unfollow">
-		<% if u.followed_by? current_user %>
-			<%= link_to "フォロー解除", user_relationships_path(u), method: :delete %>
-		<% else %>
-			<%= link_to "フォロー", user_relationships_path(u), method: :post %>
+		<% if user.followed_by? current_user %>
+			<%= link_to "フォロー解除", user_relationships_path(user), method: :delete %>
+		<% elsif user != current_user %>
+			<%= link_to "フォロー", user_relationships_path(user), method: :post %>
 		<% end %>
 	</div>
 <% end %>

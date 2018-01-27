@@ -53,25 +53,25 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# devise
+# 会員登録機能
 gem 'devise'
 
-# bootstrap
+# フレームワーク
 gem 'bootstrap-sass'
 
 # jquery
 gem 'jquery-rails'
 
-# refile
+# 画像投稿関係
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'refile-s3'
 
-# seed-fu
+# 初期データのgem
 gem 'seed-fu'
 
-# kaminari
+# ページングのgem
 gem 'kaminari'
 
-# pry-rails
+# rails consoleをpryで開くgem
 gem 'pry-rails'
