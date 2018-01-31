@@ -1,0 +1,29 @@
+<footer class="bg-color03">
+	<div class="row">
+		<div class="col-sm-offset-2 col-sm-4">
+			<ul>
+				<li>カテゴリ一覧</li>
+				<li>話題の収納術</li>
+				<li>新着収納術</li>
+			</ul>
+		</div>
+		<div class="col-sm-4">
+			<ul>
+				<li>収納術を紹介する</li>
+				<li>書き方について</li>
+				<% if user_signed_in? %>
+        	<li><%= link_to "プロフィール変更", edit_user_registration_path %></li>
+        	<li><%= link_to "#{current_user.nickname}さんのマイページ", user_path(current_user) %></li>
+        <% elsif admin_signed_in? %>
+        	<li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} %></li>
+        <% else %>
+        	<li><%= link_to "新規登録", new_user_registration_path %></li>
+        	<li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="copy bg_color01">
+    <p class="text_center">©️ storage</p>
+  </div>
+</footer>
