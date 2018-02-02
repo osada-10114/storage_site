@@ -1,26 +1,24 @@
 <p id="notice"><%= notice %></p>
 <% provide(:title, "投稿一覧") %>
 <div class="container">
-  <div class="row">
-    <%= paginate @posts %>
-  </div>
-  <% @posts.each do |post| %>
-    <div class="row col-sm-6">
-      <div class="img-box" style="text-align: center;">
-        <% if post.post_images.present? %>
-          <% post.post_images.each do |image| %>
-            <%= attachment_image_tag image, :image, :fill, 100, 100 %>
-          <% end %>
-        <% else %>
-          <%= image_tag 'no_image.jpg', size: '100x100' %>
-        <% end %>
-        <h2><%= link_to post.post_name, post_path(post) %></h2>
-        <p>by <%= post.user.nickname %></p>
-      </div>
-    </div>
-  <% end %>
   <%= paginate @posts %>
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="row col-sm-4">
+        <div class="img-box" style="text-align: center;">
+          <% if post.post_images.present? %>
+            <% post.post_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image.jpg', size: '100x100' %>
+          <% end %>
+          <h2><%= link_to post.post_name, post_path(post) %></h2>
+          <p>by <%= post.user.nickname %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate @posts %><br>
+  <%= link_to '投稿する', new_post_path %>
 </div>
-<br>
-
-<%= link_to 'New Post', new_post_path %>

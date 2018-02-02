@@ -11,49 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :post_name %>
-    <%= f.text_field :post_name, id: :post_post_name %>
+  <div class="container form">
+    <div class="row">
+      <h2>ポストネーム</h2>
+      <%= f.text_field :post_name, id: :post_post_name, placeholder: "ポストネームを入力してください" %>
+    </div>
+    <div class="row">
+      <h2>トータルプライス</h2>
+      <%= f.number_field :total_price, id: :post_total_price, placeholder: "半角数字で入力してください" %>
+    </div>
+    <div class="row">
+      <h2>一言説明</h2>
+      <%= f.text_field :explanation, id: :post_explanation, placeholder: "一言説明を入力してください" %>
+    </div>
+    <div class="row">
+      <h2>カテゴリー選択</h2>
+      <%= f.select :category, Post.categories.keys.to_a, class: 'form-control' %>
+    </div>
+    <div class="row">
+      <h2>材料</h2>
+      <%= f.text_field :material, id: :post_material %>
+    </div>
+    <div class="row">
+      <h2>必要量</h2>
+      <%= f.number_field :material_quantity, id: :post_material_quantity, placeholder: "材料の必要個数を入力してください" %>
+    </div>
+    <div class="row">
+      <h2>コツ・ポイント</h2>
+      <%= f.text_area :tip, id: :post_tip, placeholder: "この方法をやるにあたってのコツやポイントを教えてください" %>
+    </div>
+    <div class="row">
+      <h2>きっかけ</h2>
+      <%= f.text_area :reason, id: :post_reason, placeholder: "この方法を思いついたきっかけ" %>
+    </div>
+    <div class="row">
+      <h2>画像</h2>
+      <%= f.attachment_field :post_images_images, multiple: true %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :total_price %>
-    <%= f.number_field :total_price, id: :post_total_price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :explanation %>
-    <%= f.text_field :explanation, id: :post_explanation %>
-  </div>
-
-  <div class="field">
-    <%= f.select :category, Post.categories.keys.to_a, class: 'form-control' %>
-  </div>
-
-  <div class="field">
-    <%= f.label :material %>
-    <%= f.text_field :material, id: :post_material %>
-  </div>
-
-  <div class="field">
-    <%= f.label :material_quantity %>
-    <%= f.number_field :material_quantity, id: :post_material_quantity %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tip %>
-    <%= f.text_area :tip, id: :post_tip %>
-  </div>
-
-  <div class="field">
-    <%= f.label :reason %>
-    <%= f.text_area :reason, id: :post_reason %>
-  </div>
-
-  <div class="field">
-    <%= f.attachment_field :post_images_images, multiple: true %></p>
-  </div>
-
+  
   ログインID：<%= current_user.id %>
 
   <div class="actions">
