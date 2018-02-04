@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   end
   resources :posts do
     resource :favorites, only: [:create, :destroy]
+    collection do
+      post "form2"
+    end
   end
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

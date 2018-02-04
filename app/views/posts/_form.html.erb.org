@@ -1,0 +1,58 @@
+<%= form_with(model: post, local: true) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container form">
+    <div class="row">
+      <h2>ポストネーム</h2>
+      <%= f.text_field :post_name, id: :post_post_name, placeholder: "ポストネームを入力してください" %>
+    </div>
+    <div class="row">
+      <h2>トータルプライス</h2>
+      <%= f.number_field :total_price, id: :post_total_price, placeholder: "半角数字で入力してください" %>
+    </div>
+    <div class="row">
+      <h2>一言説明</h2>
+      <%= f.text_field :explanation, id: :post_explanation, placeholder: "一言説明を入力してください" %>
+    </div>
+    <div class="row">
+      <h2>カテゴリー選択</h2>
+      <%= f.select :category, Post.categories.keys.to_a, class: 'form-control' %>
+    </div>
+    <div class="row">
+      <h2>材料</h2>
+      <%= f.text_field :material, id: :post_material %>
+    </div>
+    <div class="row">
+      <h2>必要量</h2>
+      <%= f.number_field :material_quantity, id: :post_material_quantity, placeholder: "材料の必要個数を入力してください" %>
+    </div>
+    <div class="row">
+      <h2>コツ・ポイント</h2>
+      <%= f.text_area :tip, id: :post_tip, placeholder: "この方法をやるにあたってのコツやポイントを教えてください" %>
+    </div>
+    <div class="row">
+      <h2>きっかけ</h2>
+      <%= f.text_area :reason, id: :post_reason, placeholder: "この方法を思いついたきっかけ" %>
+    </div>
+    <div class="row">
+      <h2>画像</h2>
+      <%= f.attachment_field :post_images_images, multiple: true %>
+    </div>
+  </div>
+  
+  ログインID：<%= current_user.id %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

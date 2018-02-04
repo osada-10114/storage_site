@@ -5,9 +5,10 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     follow = current_user.relationships.build(following_id: @user.id)
     if follow.save
-      redirect_to posts_url, notice: "フォローしました"
+      flash[:notice] = "フォローしました"
+      redirect_to posts_url
     else
-      redirect_to posts_url, alert: "フォローできません"
+      redirect_to posts_url
     end
   end
   
@@ -15,6 +16,7 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     follow = current_user.relationships.find_by!(following_id: @user.id)
     follow.destroy
-    redirect_to posts_url, notice: "フォロー解除しました"
+    flash[:notice] = "フォロー解除しました"
+    redirect_to posts_url
   end
 end

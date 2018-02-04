@@ -1,24 +1,65 @@
-<p id="notice"><%= notice %></p>
 <% provide(:title, "投稿一覧") %>
-<div class="container">
-  <%= paginate @posts %>
-  <div class="row">
-    <% @posts.each do |post| %>
-      <div class="row col-sm-4">
-        <div class="img-box" style="text-align: center;">
+<div id="top">
+<div id="content">
+  <div class="content-inner">
+    <div id="category_search"></div>
+    <h2 class="headline-title header-separator">レシピ一覧</h2>
+    <div class="list">
+      <% @posts.each do |post| %>
+        <div class="list-content col-sm-3">
           <% if post.post_images.present? %>
             <% post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+              <%= attachment_image_tag image, :image, :fill, 208, 208 %>
             <% end %>
           <% else %>
-            <%= image_tag 'no_image.jpg', size: '100x100' %>
+            <%= image_tag 'no_image.jpg', size: '208x208' %>
           <% end %>
-          <h2><%= link_to post.post_name, post_path(post) %></h2>
-          <p>by <%= post.user.nickname %></p>
+          <div class="list-info">
+            <div class="list-title">
+              <p><%= link_to post.post_name, post_path(post) %></p>
+            </div>
+            <div class="list-explanation">
+              <%= post.explanation %>
+            </div>
+            <div class="list-material">
+              <%= post.material %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+      <div class="float-clear"></div>
+      <%= paginate @posts %><br>
+      <%= link_to '投稿する', new_post_path %>
+    </div>
   </div>
-  <%= paginate @posts %><br>
-  <%= link_to '投稿する', new_post_path %>
 </div>
+</div>
+
+<div id="categories">
+  <div id="categories_inner">
+    <h2>カテゴリからレシピを探す</h2>
+    <div class="category-block">
+      <!-- 2列くらいで表示 -->
+      <ul>
+        <li>
+          <!-- <h3>リンクtoカテゴリ検索、ポストネーム</h3> -->
+        </li>
+      </ul>
+    </div>
+    <div class="float-clear"></div>
+    <div class="to-index-link">
+      <!-- カテゴリ一覧はこちら、カテゴリインデックスパスのリンク -->
+    </div>
+  </div>
+</div>
+<div id="storage-site-about">
+  <div class="storage-site-about-inner">
+    <h3>教えて！みんなの収納術とは</h3>
+    <div class="body">教えて！みんなの収納術では、「部屋をどうにか綺麗にしたい」をテーマに、オリジナリティ溢れるあなたの部屋の片付け方を、手順を追った写真でわかりやすく紹介しています。</div>
+    <h3>写真で紹介の魅力</h3>
+    <div class="body">家の中の同じような部分が散らかっていて困っている人が写真を参考にこういう風に片付けたい、こうなったら今後も使いやすそうといったイメージを容易に想像できるところにあります。</div>
+    <h3>収納術へのこだわり</h3>
+    <div class="body">お金をかけて収納を購入すれば誰だって整理整頓できますが、突っ張り棒やカゴといった、100円均一ショップで購入できる商品や木材等のホームセンターで購入できるようなものを材料として作るため、格安で片付けることができます。</div>
+  </div>
+</div>
+

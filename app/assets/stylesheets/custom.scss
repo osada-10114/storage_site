@@ -1,12 +1,13 @@
 // CSSのリセット
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tr, th, td {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, tr, th, td {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	outline: 0;
 	font-size: 100%;
 	vertical-align: baseline;
+	background: transparent;
 }
 ol, ul {
 	list-style: none;
@@ -16,14 +17,101 @@ img {
 }
 
 //コンテント
-
+body {
+	color: #262626;
+	font-family: Helvetica,HiraKakuProN-W3,'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+html {
+	font-weight: 400;
+}
 .bg_color01 {background-color: rgb(0, 122, 86);color: #FFF;}
-.bg-color03 {background-color: #f3f3e9;}
+.bg_color03 {background-color: #f3f3e9;}
 
 .text_center {
 	text-align: center;
 }
+.main {
+	margin-top: 50px;
+}
+.wrapper {
+	position: relative;
+	z-index: 0;
+	width: 100%;
+	margin: 0 auto;
+}
+.container {
+	text-align: left;
+	width: 970px;
+	margin: 0 auto;
+	background-color: transparent;
+}
+#content {
+	width: 100%;
+	background: #fff;
+}
+#content.content-inner {
+	padding-top: 40px;
+	width: 1008px;
+	margin: 0 auto;
+	position: relative;
+	padding-bottom: 112px;
+}
+h2.headline-title {
+	font-size: 20px;
+	font-weight: bold;
+}
+.header-separator {
+	border-bottom: 1px solid #c6b363;
+}
 
+.list-content {
+	margin-top: 16px;
+	width: 208px;
+	float: left;
+	position: relative;
+	float: left;
+}
+.float-clear {
+	clear: both;
+}
+.list-content img {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+}
+.list-info {
+	text-align: center;
+	line-height: 1.3;
+}
+.list-title {
+	margin: 8px 0;
+	height: 40px;
+}
+.list-title p {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.list-title p a {
+	color: #666;
+}
+
+.list-title p a:hover {
+	background: none;
+}
+
+.list-explanation {
+	color: #5e5e5e;
+	font-size: 13px;
+	margin: 8px 0;
+	height: 30px;
+}
+.list-material {
+	color: #8e8e8e;
+	font-size: 11px;
+	margin: 8px 0 0;
+	height: 28px;
+}
 // ヘッダー
 
 header {
@@ -31,13 +119,9 @@ header {
 		background: url("logo.png") no-repeat top;
 		float: left;
 		width: 70%;
-
 	}
 }
 
-body {
-	padding-top: 50px;
-}
 
 // フッター
 
@@ -59,15 +143,103 @@ footer {
   background-size: cover;
   width: 100%;
 	height: 100%;
-	padding-top: 20px;
+	padding-top: 50px;
   position: relative;
 	opacity: 0.5;
 }
 
 .top h1 {
 	text-align: center;
-	color: white;
 	line-height: 480px;
 	text-shadow:2px 5px 3px #000000;
+}
+
+.top h1 a {
+	text-decoration: none;
+	color: white;
+}
+
+.top h1 a:hover {
+	background: none;
+}
+
+// カテゴリ
+#categories {
+	width: 100%;
+	border-top: 1px solid #cfcfcf;
+	background-color: #fff;
+	padding: 40px 0;
+}
+
+#categories_inner {
+	width: 1008px;
+	margin: 0 auto;
+}
+
+#categories_inner h2 {
+	font-size: 20px;
+	font-weight: bold;
+	color: #262626;
+	margin-bottom: 40px;
+}
+
+.category-block {
+	float: left;
+	width: 25%;
+	padding-right: 48px;
+}
+
+.category-block h3 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 24px;
+}
+
+.category-block h3 a {
+	color: #262626;
+}
+
+.to-index-link {
+	width: 100%;
+	text-align: right;
+	font-size: 14px;
+}
+
+#storage-site-about {
+	width: 100%;
+	background-color: #fff;
+	border-top: 1px solid #cfcfcf;
+}
+
+.storage-site-about-inner {
+	width: 1008px;
+	margin: 0 auto;
+	padding: 32px 0;
+}
+
+.storage-site-about-inner h3 {
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.storage-site-about-inner .body {
+	font-size: 13px;
+	line-height: 1.5;
+	margin-bottom: 24px;
+}
+
+// フラッシュ
+.flash {
+  padding: 10px 0;
+  color: white;
+  background: rgb(0, 122, 86);
+  text-align: center;
+  position: relative;
+  top: 64px;
+  z-index: 10;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
 }
 

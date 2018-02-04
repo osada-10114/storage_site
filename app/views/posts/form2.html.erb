@@ -1,0 +1,60 @@
+<style>
+.show_box {
+  width: 608px;
+  height: 778px;
+  padding: 12px 20px 10px 20px;
+  border: 1px solid #ded5c0;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+</style>
+
+<%= form_for @post do |f| %>
+<div class="show_box">
+
+  <!-- タイトル -->
+  <h1><%= @post.post_name %><%= f.hidden_field :post_name %> </h1>
+
+  <!-- 画像 -->
+  <%= f.attachment_field :post_images_images, multiple: true %>
+  <!-- 一言説明 -->
+  <h2>一言説明</h2>
+  <%= f.text_field :explanation, id: :post_explanation, placeholder: "一言説明を入力してください" %>
+
+  <!-- 投稿者 -->
+  by <%= current_user.nickname %>
+
+  <!-- 材料,総額 -->
+  <table>
+    <h3>材料</h3>
+    <%= f.text_field :material, id: :post_material %>
+    <%= f.number_field :material_quantity, id: :post_material_quantity, placeholder: "材料の必要個数を入力してください" %>
+    <h2>トータルプライス</h2>
+      <%= f.number_field :total_price, id: :post_total_price, placeholder: "半角数字で入力してください" %>
+  </table>
+  
+
+  <!-- 工程 -->
+  <!-- これから作る -->
+
+  <!-- コツ・ポイント -->
+  <h3>コツ・ポイント</h3>
+  <%= f.text_area :tip, id: :post_tip, placeholder: "この方法をやるにあたってのコツやポイントを教えてください" %>
+
+  <!-- このレシピの生い立ち -->
+  <h3>このレシピの生い立ち</h3>
+  <%= f.text_area :reason, id: :post_reason, placeholder: "この方法を思いついたきっかけ" %>
+
+  <!-- コメント入力欄 -->
+  <!-- これから作る -->
+
+  <!-- カテゴリ -->
+  <h4>このレシピが登録されているカテゴリ</h4>
+  <%= f.select :category, Post.categories.keys.to_a, class: 'form-control' %>
+  <div class="actions">
+    <%= f.submit 'Back', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'この内容で投稿する', class: "button" %>
+  </div>
+<% end %>

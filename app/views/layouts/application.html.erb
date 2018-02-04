@@ -4,12 +4,29 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
+<!-- スクリプトファイル -->
+<!-- 入力欄の文字数カウントダウン -->
+    <script type="text/javascript"><!--
+function CountDownLength( idn, str, mnum ) {
+   document.getElementById(idn).innerHTML = "あと" + (mnum - str.length) + "文字";
+}
+// --></script>
+
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <div class="main">
-    	<%= yield %>
+      <div class="wrapper">
+        <div class="container">
+    	   <%= yield %>
+        </div>
+      </div>
+      <%= render "layouts/footer" %>
   	</div>
-    <%= render "layouts/footer" %>
   </body>
 </html>

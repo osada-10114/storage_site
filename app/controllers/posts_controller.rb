@@ -2,6 +2,15 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
+  # サイト内検索
+  def self.search(search)
+    if search
+      Post.where(['post_name LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
   # GET /posts
   # GET /posts.json
   def index
@@ -32,7 +41,8 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        flash[:notice] = "レシピを作成しました"
+        format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -46,7 +56,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        flash[:notice] = "レシピを編集しました"
+        format.html { redirect_to @post }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -59,10 +70,15 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
+    flash[:notice] = "レシピを削除しました"
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def form2
+    @post = Post.new(post_params)
   end
 
   private
