@@ -4,27 +4,34 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
-<!-- スクリプトファイル -->
-<!-- 入力欄の文字数カウントダウン -->
-    <script type="text/javascript"><!--
-function CountDownLength( idn, str, mnum ) {
-   document.getElementById(idn).innerHTML = "あと" + (mnum - str.length) + "文字";
-}
-// --></script>
-
+    <!-- スクリプトファイル -->
+    <!-- 入力欄の文字数カウントダウン -->
+    <script type="text/javascript">function CountDownLength( idn, str, mnum ) {
+    document.getElementById(idn).innerHTML = "あと" + (mnum - str.length) + "文字";
+    }</script>
   </head>
+
   <body>
     <%= render 'layouts/header' %>
+
+
+    <!-- 検索ボックス -->
+    <div class="search">
+      <%= form_tag posts_path, :method => 'get' do %>
+        <%= text_field_tag :search, params[:search], placeholder: "タイトルで収納術を検索" %>
+        <%= submit_tag "検索", :name => nil, class: "button bg_color01" %>
+      <% end %>
+    </div>
+
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
       </div>
     <% end %>
+
     <div class="main">
       <div class="wrapper">
-        <div class="container">
-    	   <%= yield %>
-        </div>
+    	  <%= yield %>
       </div>
       <%= render "layouts/footer" %>
   	</div>

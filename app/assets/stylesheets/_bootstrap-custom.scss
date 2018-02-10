@@ -51,7 +51,6 @@
 
 .navbar-default {
   background-color: #ffffff;
-  border-style: none;
 }
 .navbar-default .navbar-brand {
   color: #949696;
@@ -115,7 +114,7 @@
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-style: none;
+  border-bottom: 1px solid #cfcfcf;
 }
 .navbar-default .navbar-link {
   color: #949696;
@@ -154,5 +153,9 @@
     padding-bottom: 20px;
     line-height: 4px;
     border-top: 1px solid #949696;
+    transition: none;
 	}
+  .navbar-collapse {
+    background-color: white;
+  }
 }

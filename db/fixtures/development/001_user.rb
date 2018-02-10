@@ -1,8 +1,8 @@
 User.seed_once(:id) do |user|
 	user.id = 1
-	user.nickname =  "aaa"
-	user.email = "a@a"
+	user.nickname =  "testuser"
+	user.email = "testuser@example.com"
 	user.gender = 0
-	user.password = "aaaaaaaa"
-	user.password_confirmation = "aaaaaaaa"
+	user.password = "testuser"
+	user.password_confirmation = "testuser"
 end

@@ -2,19 +2,16 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
 
-  # サイト内検索
-  def self.search(search)
-    if search
-      Post.where(['post_name LIKE ?', "%#{search}%"])
-    else
-      Post.all
-    end
-  end
-
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.page(params[:page]).per(10)
+    @posts = Post.search(params[:search]).page(params[:page]).per(10)
+    @new_posts = Post.limit(12).order(created_at: "DESC")
+    @categories = Post.all
+    if params[:category].present?
+      @posts = @posts.get_by_category params[:category]
+    end
+
   end
 
   # GET /posts/1
