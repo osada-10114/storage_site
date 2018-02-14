@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   enum gender: {男性:0, 女性:1}
   has_many :posts
+  has_many :comments
   has_many :favorites, dependent: :destroy
   has_many :relationships, foreign_key: :follower_id
 	has_many :followings, through: :relationships
