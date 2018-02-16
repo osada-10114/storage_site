@@ -1,4 +1,5 @@
 <% provide(:title, "マイページ") %>
+<% breadcrumb :user, @user %>
 <ul>
     <li>
       <%= link_to user_path(@user) do %>

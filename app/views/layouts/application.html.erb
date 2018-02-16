@@ -15,9 +15,14 @@
     <%= render 'layouts/header' %>
 
     <div class="main">
+
+      <div id="breadcrumb">
+        <div class="breadcrumb-inner"><%= breadcrumbs separator: " &rsaquo; " %></div>
+      </div>
       <div class="wrapper">
     	  <%= yield %>
       </div>
+
       <%= render "layouts/footer" %>
   	</div>
   </body>

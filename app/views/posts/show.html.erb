@@ -13,6 +13,7 @@
   color: #fff;
 }
 </style>
+<% breadcrumb :post, @post %>
 <% provide(:title, "詳細") %>
 
 <div class="show_box">
@@ -84,7 +85,7 @@
 
   <!-- カテゴリ -->
   <h4>このレシピが登録されているカテゴリ</h4>
-  <%= @post.category %>
+  <%= link_to "#{@post.category}", posts_path(:category => @post.category) %>
 </div>
 
 <p>

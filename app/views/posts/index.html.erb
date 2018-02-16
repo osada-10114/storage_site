@@ -1,17 +1,17 @@
 <% provide(:title, "投稿一覧") %>
+<% breadcrumb :posts %>
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <!-- 検索ボックス -->
 <div class="search">
   <%= form_tag posts_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search], placeholder: "タイトルで収納術を検索" %>
+    <%= text_field_tag :search, params[:search], placeholder: "タイトルで収納術を検索（部分一致）" %>
     <%= submit_tag "検索", :name => nil, class: "button bg_color01" %>
   <% end %>
 </div>
-
-    <% if flash[:notice] %>
-      <div class="flash">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
 
 
 <!-- おすすめの収納術 -->
@@ -44,40 +44,49 @@
     <div class="float-clear"></div>
   </div>
 </div>
-
 <!-- 新着の収納術１２件 -->
 <div id="content">
   <div class="content-inner">
-    <div id="new_post">
-      <h2 class="headline-title header-separator">新着収納術</h2>
-      <div class="list">
-        <% @new_posts.each do |new_post| %>
-          <div class="list-content col-sm-3">
-            <% if new_post.post_images.present? %>
-              <% new_post.post_images.each do |image| %>
-                <%= attachment_image_tag image, :image, :fill, 208, 208 %>
+    <% if params[:category].nil? && params[:search].nil? %>
+      <div id="new_post">
+        <h2 class="headline-title header-separator">新着収納術</h2>
+        <div class="list">
+          <% @new_posts.each do |new_post| %>
+            <div class="list-content col-sm-3">
+              <% if new_post.post_images.present? %>
+                <% new_post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 208, 208 %>
+                <% end %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: '208x208' %>
               <% end %>
-            <% else %>
-              <%= image_tag 'no_image.jpg', size: '208x208' %>
-            <% end %>
-            <div class="list-info">
-              <div class="list-title">
-                <p><%= link_to new_post.post_name, post_path(new_post) %></p>
-              </div>
-              <div class="list-explanation">
-                <%= new_post.explanation %>
-              </div>
-              <div class="list-material">
-                <%= new_post.material %>
+              <div class="list-info">
+                <div class="list-title">
+                  <p><%= link_to new_post.post_name, post_path(new_post) %></p>
+                </div>
+                <div class="list-explanation">
+                  <%= new_post.explanation %>
+                </div>
+                <div class="list-material">
+                  <%= new_post.material %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-        <div class="float-clear"></div>
+          <% end %>
+          <div class="float-clear"></div>
+        </div>
       </div>
-    </div>
+    <% end %>
 
-    <h2 class="headline-title header-separator">収納術一覧</h2>
+<!-- 投稿一覧 -->
+    <% if params[:category].nil? && params[:search].nil? %>
+      <h2 class="headline-title header-separator">収納術一覧</h2>
+    <% elsif params[:category].present? %>
+      <h2 class="headline-title header-separator"><%= @posts.first.category %>の収納術 <%= @categories.where(category: params[:category]).count %>件</h2>
+    <% else %>
+      <h2 class="headline-title header-separator">「<%= params[:search] %>」の検索結果</h2>
+    <% end %>
+    
     <div class="list">
       <% @posts.each do |post| %>
         <div class="list-content col-sm-3">
@@ -150,7 +159,6 @@
     </div>
   </div>
 </div>
-
 <!-- サイトについて -->
 <div id="storage-site-about">
   <div class="storage-site-about-inner">

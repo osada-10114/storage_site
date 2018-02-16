@@ -1,11 +1,8 @@
 <%= form_for @comment do |f| %>
- <%= f.hidden_field :user_id %>
- <%= f.hidden_field :post_id %>
-  <div class="field">
-    <%= f.label :コメントを書く %>
-    <%= f.text_area :body, id: :comment_body %>
-  </div>
-
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :post_id %>
+  <h4>コメントを書く</h4>
+  <%= f.text_area :body, id: :comment_body %>
   <div class="actions">
     <%= f.submit %>
   </div>

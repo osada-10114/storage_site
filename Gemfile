@@ -73,5 +73,8 @@ gem 'seed-fu'
 # ページングのgem
 gem 'kaminari'
 
+# パンくずリスト
+gem 'gretel'
+
 # rails consoleをpryで開くgem
 gem 'pry-rails'
