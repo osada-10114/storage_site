@@ -1,8 +1,9 @@
 <%= form_for @comment do |f| %>
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :post_id %>
-  <h4>コメントを書く</h4>
-  <%= f.text_area :body, id: :comment_body %>
+  <h3 class="headline-title">コメントを書く</h3>
+  <%= f.text_area :body, id: :comment_body, class: "form", "onkeyup" => "CountDownLength('cdlength1', value, 500);", maxlength: 500 %>
+  <p id="cdlength1"><%= current_user.nickname %>さん　あと500文字です</p>
   <div class="actions">
     <%= f.submit %>
   </div>

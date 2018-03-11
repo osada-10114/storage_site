@@ -64,6 +64,10 @@ html {
 	color: #5e5e5e;
 } 
 
+.breadcrumbs .current {
+	font-weight: bold;
+}
+
 .wrapper {
 	position: relative;
 	z-index: 0;
@@ -133,7 +137,7 @@ html {
 	position: relative;
 	padding-bottom: 112px;
 }
-.headline-title {
+#index .headline-title {
 	margin: 0 24px 12px 0;
 	padding: 0 0 8px;
 	font-size: 20px;
