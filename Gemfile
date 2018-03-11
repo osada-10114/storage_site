@@ -62,6 +62,9 @@ gem 'jquery-rails'
 # フレームワーク
 gem 'bootstrap-sass',       '3.2.0.0'
 
+# 多言語化
+gem 'rails-i18n'
+
 # 画像投稿関係
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
@@ -75,6 +78,9 @@ gem 'kaminari'
 
 # パンくずリスト
 gem 'gretel'
+
+# SNSシェアボタン
+gem 'social-share-button'
 
 # rails consoleをpryで開くgem
 gem 'pry-rails'
