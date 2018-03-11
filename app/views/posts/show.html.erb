@@ -302,11 +302,13 @@
       <!-- 材料,総額 -->
       <div class="material">
         <h2 class="headline-title">材料</h2>
-        <ul>
-          <li>
-            <span class="material-title"><%= @post.material %></span>
-            <span class="material-quantity"><%= @post.material_quantity %></span>
-          </li>
+        <ul>        
+          <% @post.materials.each do |material| %>
+            <li>
+              <span class="material-title"><%= material.material_name %></span>
+              <span class="material-quantity"><%= material.material_quantity %>個</span>
+            </li>
+          <% end %>
           <%= @post.total_price %>
         </ul>
       </div>
