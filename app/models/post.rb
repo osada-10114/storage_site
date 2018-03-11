@@ -5,6 +5,8 @@ class Post < ApplicationRecord
 	has_many :comments
 	has_many :favorites, dependent: :destroy
 	has_many :post_images, dependent: :destroy
+	has_many :materials, dependent: :destroy
+	accepts_nested_attributes_for :materials, allow_destroy: true
 	accepts_attachments_for :post_images, attachment: :image
 
 	def favorited_by? user

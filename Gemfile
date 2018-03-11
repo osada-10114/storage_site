@@ -55,32 +55,25 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 会員登録機能
 gem 'devise'
-
 # jquery
 gem 'jquery-rails'
-
 # フレームワーク
 gem 'bootstrap-sass',       '3.2.0.0'
-
 # 多言語化
 gem 'rails-i18n'
-
 # 画像投稿関係
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'refile-s3'
-
 # 初期データのgem
 gem 'seed-fu'
-
 # ページングのgem
 gem 'kaminari'
-
 # パンくずリスト
 gem 'gretel'
-
+# フォームのネスト用
+gem 'cocoon'
 # SNSシェアボタン
 gem 'social-share-button'
-
 # rails consoleをpryで開くgem
 gem 'pry-rails'

@@ -27,8 +27,14 @@
   <!-- 材料,総額 -->
   <table>
     <h3>材料</h3>
-    <%= f.text_field :material, id: :post_material %>
-    <%= f.number_field :material_quantity, id: :post_material_quantity, placeholder: "材料の必要個数を入力してください" %>
+    <div class="field">
+      <%= f.fields_for :materials do |material| %>
+        <%= render 'material_fields', f: material %>
+     <% end %>
+   </div>
+    <div class="field">
+      <%= link_to_add_association '追加', f, :materials, data: { association_insertion_method: 'before' } %>
+    </div>
     <h2>トータルプライス</h2>
       <%= f.number_field :total_price, id: :post_total_price, placeholder: "半角数字で入力してください" %>
   </table>

@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
+//= require cocoon
 //= require bootstrap-sprockets-custom
 //= require turbolinks
 //= require social-share-button
