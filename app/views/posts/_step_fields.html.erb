@@ -1,0 +1,14 @@
+<div class="nested-fields">
+	<div class="field">
+		<%= f.label '説明' %>
+		<%= f.text_field :step_explanation %>
+		<%= f.label '画像' %>
+		<%= f.attachment_field :step_image, class: "upimage1" %>
+		<%= image_tag 'no_image.jpg', size: '80x80', id: "preview1" %>
+		<%= javascript_tag do %>
+		$(".upimage1").upimageview('#preview1');
+		<% end %>
+
+	</div>
+	<%= link_to_remove_association "削除", f %>
+</div>
