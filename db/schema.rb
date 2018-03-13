@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311072356) do
+ActiveRecord::Schema.define(version: 20180311100644) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 20180311072356) do
     t.integer "following_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "steps", force: :cascade do |t|
+    t.string "step_explanation"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "step_image_id"
+    t.index ["post_id"], name: "index_steps_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|

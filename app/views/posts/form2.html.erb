@@ -1,7 +1,6 @@
 <style>
 .show_box {
   width: 608px;
-  height: 778px;
   padding: 12px 20px 10px 20px;
   border: 1px solid #ded5c0;
   border-radius: 5px;
@@ -31,16 +30,23 @@
       <%= f.fields_for :materials do |material| %>
         <%= render 'material_fields', f: material %>
      <% end %>
-   </div>
+    </div>
     <div class="field">
       <%= link_to_add_association '追加', f, :materials, data: { association_insertion_method: 'before' } %>
     </div>
     <h2>トータルプライス</h2>
       <%= f.number_field :total_price, id: :post_total_price, placeholder: "半角数字で入力してください" %>
   </table>
+  <h3>工程</h3>
+  <div class="field">
+    <%= f.fields_for :steps do |step| %>
+      <%= render 'step_fields', f: step %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= link_to_add_association '追加', f, :steps, data: { association_insertion_method: 'before' } %>
+  </div>
   
-
-  <!-- 工程 -->
   <!-- これから作る -->
 
   <!-- コツ・ポイント -->
