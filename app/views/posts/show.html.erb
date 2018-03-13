@@ -135,6 +135,11 @@
    border-bottom: 1px solid #f1f1f2; 
   }
 
+  #images_show .content .instructions ol li .step_image {
+    display: inline-block;
+    line-height: 1.7;
+    margin-right: 60px;
+  }
   #images_show .content .instructions ol li .sort_order {
     display: inline;
     font-weight: bold;
@@ -253,6 +258,14 @@
   outline: 0;
 }
 
+/*steps*/
+
+.step-position {
+  font-size: 18px;
+  font-weight: bold;
+  color: #E0D7C1;
+}
+
 </style>
 <% breadcrumb :post, @post %>
 <% provide(:title, "詳細") %>
@@ -303,9 +316,9 @@
       <div class="material">
         <h2 class="headline-title">材料</h2>
         <ul>        
-          <% @post.materials.each do |material| %>
+          <% @post.materials.each_with_index do |material, i| %>
             <li>
-              <span class="material-title"><%= material.material_name %></span>
+              <span class="material-title"><%= i + 1 %>. <%= material.material_name %></span>
               <span class="material-quantity"><%= material.material_quantity %>個</span>
             </li>
           <% end %>
@@ -316,17 +329,21 @@
       <!-- 工程 -->
       <!-- これから作る -->
       <div class="instructions">
-        <h2 class="headline-title">手順</h2>
+        <h2 class="headline-title">工程</h2>
         <ol>
-          <li>
-            <div class="sort_order">1.</div>
-            <div class="body">工程の説明</div>
-          </li>
-
-          <li>
-            <div class="sort_order">2.</div>
-          </li>
-
+          <% @post.steps.each_with_index do |step, i| %>
+            <li>
+              <div class="step_image">
+                <%= attachment_image_tag step, :step_image, :fill, 136, 142 %>
+              </div>
+              <div class="sort_order">
+                <%= i + 1 %>. 
+              </div>
+              <div class="body">
+                <%= step.step_explanation %>
+              </div>
+            </li>
+          <% end %>
         </ol>
       </div>
 

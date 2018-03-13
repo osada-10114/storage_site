@@ -9,13 +9,17 @@
 </style>
 
 <%= form_for @post do |f| %>
-<div class="show_box">
 
   <!-- タイトル -->
   <h1><%= @post.post_name %><%= f.hidden_field :post_name %> </h1>
 
   <!-- 画像 -->
-  <%= f.attachment_field :post_images_images, multiple: true %>
+  <%= image_tag 'photo_space.jpg', size: '280x383', id: "preview1" %>
+  <%= f.attachment_field :post_images_images, multiple: true, class: "upimage1" %>
+  <%= javascript_tag do %>
+    $(".upimage1").upimageview('#preview1');
+  <% end %>
+
   <!-- 一言説明 -->
   <h2>一言説明</h2>
   <%= f.text_field :explanation, id: :post_explanation, placeholder: "一言説明を入力してください" %>
@@ -47,8 +51,6 @@
     <%= link_to_add_association '追加', f, :steps, data: { association_insertion_method: 'before' } %>
   </div>
   
-  <!-- これから作る -->
-
   <!-- コツ・ポイント -->
   <h3>コツ・ポイント</h3>
   <%= f.text_area :tip, id: :post_tip, placeholder: "この方法をやるにあたってのコツやポイントを教えてください" %>
@@ -56,9 +58,6 @@
   <!-- このレシピの生い立ち -->
   <h3>このレシピの生い立ち</h3>
   <%= f.text_area :reason, id: :post_reason, placeholder: "この方法を思いついたきっかけ" %>
-
-  <!-- コメント入力欄 -->
-  <!-- これから作る -->
 
   <!-- カテゴリ -->
   <h4>このレシピが登録されているカテゴリ</h4>
