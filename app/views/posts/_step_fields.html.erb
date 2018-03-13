@@ -1,8 +1,7 @@
 <div class="nested-fields">
 	<div class="field">
 		<%= f.label '説明' %>
-		<%= f.text_area :step_explanation, "onkeyup" => "CountDownLength('cdlength1, value, 80);", maxlength: 80 %>
-		<p id="cdlength1">あと80文字</p>
+		<%= f.text_field :step_explanation %>
 		<%= f.label '画像' %>
 		<%= f.attachment_field :step_image, class: "upimage1" %>
 	</div>
