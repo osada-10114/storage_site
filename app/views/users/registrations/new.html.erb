@@ -16,17 +16,6 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field" %>
-    <div class="radio-inline">
-      <%= f.radio_button :gender, :男性, checked: "checked" %>
-      <%= f.label :男性, class: "gender_label" %>
-    </div>
-    <div class="radio-inline">
-      <%= f.radio_button :gender, :女性 %>
-      <%= f.label :女性, class: "gender_label" %>
-    </div>
-  </div>
-
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
