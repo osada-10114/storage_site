@@ -1,17 +1,18 @@
 <style>
-.form h1 {
+#form h1 {
   font-size: 24px;
+  font-weight: bold;
 }
-.form h1 small {
+#form h1 small {
   font-size: 8px;
 }
-.form h2 {
+#form h2 {
   font-size: 20px;
 }
-.form h2 small {
-  font-size: 7px;
+#form h2 small {
+  font-size: 8px;
 }
-.form .button {
+#form .button {
   margin: 20px auto 0;
   display: block;
   width: 200px;
@@ -24,8 +25,8 @@
   border: none;
   color: #fff;
 }
-.form input[type="text"] {
-  width: 100%;
+#form input[type="text"] {
+  width: 80%;
   border-radius: 4px;
   line-height: 32px;
   border: 1px solid #ccc;
@@ -33,18 +34,17 @@
 }
 </style>
 
-<div class="container form">
-  <div class="page-header">
-    <h1>レシピを投稿する
-    <small>あなたの家の定番の味、工夫やアイデアをレシピとして記録しよう</small></h1>
-  </div>
-  <%= form_for @post, url: {action: 'form2'} do |f| %>
-    <div>
-      <h2>レシピのタイトル<small>※あとから変更できます</small></h2>
+<div id="form">
+  <div class="container">
+    <div class="page-header">
+      <h1>収納術を投稿する
+      <small>あなたの工夫やアイデアを収納術として記録しよう</small></h1>
+    </div>
+    <%= form_for @post, url: {action: 'form2'} do |f| %>
+      <h2>レシピのタイトル<small>※必須</small></h2>
       <%= f.text_field :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 20);", maxlength: 20, placeholder: "例）水回りの収納術" %>
       <p id="cdlength1">あと20文字</p>
-    </div>
-        
-    <%= f.submit "材料・作り方の入力に進む", class: "button" %>
-  <% end %>
+      <%= f.submit "材料・作り方の入力に進む", class: "button" %>
+    <% end %>
+  </div>
 </div>

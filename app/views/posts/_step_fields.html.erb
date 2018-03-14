@@ -1,9 +1,10 @@
 <div class="nested-fields">
-	<div class="field">
-		<%= f.label '説明' %>
-		<%= f.text_field :step_explanation %>
-		<%= f.label '画像' %>
+	<li class="step-image">
+		<h3 class="headline-title">画像</h3>
 		<%= f.attachment_field :step_image, class: "upimage1" %>
-	</div>
-	<%= link_to_remove_association "削除", f %>
+	</li>
+	<li class="step-description">
+		<%= f.text_field :step_explanation, placeholder: "説明文を入力して下さい" %>
+		<%= link_to_remove_association "削除", f %>
+	</li>
 </div>

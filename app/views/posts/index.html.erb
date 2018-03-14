@@ -2,11 +2,6 @@
 <% breadcrumb :posts %>
 
 <div id="index">
-<% if flash[:notice] %>
-  <div class="flash">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 <!-- 検索ボックス -->
 <div class="search">
   <%= form_tag posts_path, :method => 'get' do %>

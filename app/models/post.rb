@@ -1,4 +1,10 @@
 class Post < ApplicationRecord
+	validates :post_name, presence: true
+	validates :total_price, presence: true
+	validates :explanation, presence: true
+	validates :tip, presence: true
+	validates :reason, presence: true
+	
 	enum category: {棚:0, キッチン:1, トイレ:2, 玄関:3, デスク:4, クローゼット:5, テーブル周り:6, その他:7}
 	scope :get_by_category, ->(category) {where(category: category)}
 	belongs_to :user
