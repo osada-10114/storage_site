@@ -16,6 +16,12 @@ crumb :new_user do |user|
 	parent :posts
 end
 
+# 会員情報編集ページ
+crumb :edit_user do |user|
+	link "プロフィール変更", edit_user_registration_path
+	parent :posts
+end
+
 # 会員ログインページ
 crumb :session_user do |user|
 	link "ログイン", new_user_session_path
