@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :email, presence: true, uniqueness: true
+  validates :nickname, presence: true
+  
   enum gender: {男性:0, 女性:1}
   has_many :posts
   has_many :comments

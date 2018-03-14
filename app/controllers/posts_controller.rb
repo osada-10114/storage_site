@@ -40,10 +40,11 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        flash[:notice] = "レシピを作成しました"
+        flash[:notice] = "収納術を作成しました"
         format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
+        flash[:notice] = "入力に誤りがあります"
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -78,6 +79,8 @@ class PostsController < ApplicationController
 
   def form2
     @post = Post.new(post_params)
+    @post.materials.build
+    @post.steps.build
   end
 
   private

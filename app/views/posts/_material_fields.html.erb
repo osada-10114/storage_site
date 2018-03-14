@@ -1,10 +1,16 @@
-<div class="nested-fields">
-	<div class="field">
-		<%= f.label '材料名' %><br>
-		<%= f.text_field :material_name %>
-		<%= f.label '数量' %><br>
-		<%= f.number_field :material_quantity %>
-	</div>
+<style>
+.nested-fields {
+	padding: 8px;
+	border-bottom: 1px solid #f1f1f2;
+}
+</style>
 
+<div class="nested-fields">
+	<span class="material-title">
+		<%= f.text_field :material_name, placeholder: "材料名" %>
+	</span>
+	<span class="material-quantity">
+		<%= f.number_field :material_quantity, placeholder: "個数" %>個
+	</span>
 	<%= link_to_remove_association "削除", f %>
 </div>

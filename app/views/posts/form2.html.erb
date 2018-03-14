@@ -1,71 +1,326 @@
 <style>
-.show_box {
-  width: 608px;
-  padding: 12px 20px 10px 20px;
-  border: 1px solid #ded5c0;
-  border-radius: 5px;
-  background-color: #ffffff;
+  a {
+    color: #5e5e5e;
+    text-decoration: none;
+  }
+
+  a:focus {
+    outline: 0;
+  }
+
+  a:hover {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  h2 small {
+    font-size: 8px;
+  }
+
+  .headline-title h1 {
+    font-weight: bold;
+  }
+
+  #images_form .image-content img {
+    width: 560px;
+    height: 560px;
+  }
+
+  #images_form .content h1 {
+    font-size: 26px;
+    margin: 40px 0 8px;
+    line-height: 1.4;
+  }
+
+  #images_form .content h1 small {
+    margin-left: 30px;
+  }
+
+  #images_form .content .explanation {
+    margin: 0 24px 40px 0;
+  }
+
+  #images_form .content .explanation .explanation-description {
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  #images_form .content .explanation .explanation-description input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 15px;
+    line-height: 32px;
+    width: 672px;
+  }
+
+  #images_form .content .favorite {
+    position: relative;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+  .horizonal-separator {
+    border-top: 1px solid #cfcfcf;
+    margin: 16px 25px 40px 0;
+  }
+
+  #images_form .content h2.headline-title {
+    font-size: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cfcfcf;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  #images_form .content h3.headline-title {
+    font-size: 15px;
+    padding: 8px 0;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  /*material*/
+  #images_form .content .material {
+    margin: 0 24px 40px 0;
+  }
+  #images_form .content .material input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 15px;
+    line-height: 32px;
+    width: 224px;
+  }
+
+  /*total_price*/
+  #images_form .content .total_price {
+    margin: 0 24px 40px 0;
+  }
+
+  #images_form .content .total_price .total_price-number {
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  #images_form .content .total_price .total_price-number input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 15px;
+    line-height: 32px;
+    width: 336px;
+  }
+
+  /*steps*/
+  #images_form .content .steps {
+    margin: 0 24px 40px 0;
+  }
+
+  #images_form .content .steps ol {
+    margin-top: 16px;
+  }
+
+  #images_form .content .steps ol li {
+   padding: 8px 0;
+   border-bottom: 1px solid #f1f1f2; 
+  }
+
+  #images_form .content .steps ol li .step_image {
+    display: inline-block;
+    line-height: 1.7;
+    margin-right: 60px;
+  }
+
+  #images_form .content .steps ol li input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 15px;
+    line-height: 32px;
+    width: 336px;
+  }
+
+  /*tips*/
+
+  #images_form .content .tips {
+    margin: 0 24px 40px 0;
+  }
+
+  #images_form .content .tips .tip-description {
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  #images_form .content .tips .tip-description textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 15px;
+    line-height: 32px;
+    width: 672px;
+  }
+
+
+  /*reasons*/
+
+  #images_form .content .reasons {
+    margin: 0 24px 40px 0;
+  }
+
+  #images_form .content .reasons .reason-description {
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
+  #images_form .content .reasons .reason-description textarea {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 15px;
+    line-height: 32px;
+    width: 672px;
+  }
+
+  /*related-categories*/
+
+  .related-categories {
+    margin: 0 24px 40px 0;
+  }
+
+  .related-category {
+    margin-top: 16px;
+    height: 40px;
+    vertical-align: middle;
+    padding-right: 24px;
+  }
+
+  .related-category a:hover {
+    border-bottom: 1px solid #5e5e5e;
+    background: none;
+  }
+  
+  .category-block {
+    float: left;
+    width: 50%;
+    padding-right: 48px;
+    box-sizing: border-box;
+  }
+
+  .category-block ul li {
+    margin-bottom: 16px;
+  }
+
+  .category-block ul li a:hover {
+    background: transparent;
+  }
+
+  .category-block ul li a {
+    font-size: 18px;
+    color: #8e8e8e;
+  }
+
+  .category-block ul li a:focus {
+    outline: 0;
+  }
+
+
+.button {
+  margin: 20px auto 0;
+  display: block;
+  width: 200px;
+  background-color: #8888bb;
+  line-height: 44px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 6px;
+  appearance: none;
+  border: none;
+  color: #fff;
 }
+
 </style>
 
-<%= form_for @post do |f| %>
 
-  <!-- タイトル -->
-  <h1><%= @post.post_name %><%= f.hidden_field :post_name %> </h1>
+<div id= "images_form">
+  <div class="content">
+    <div class="content-inner">
+      <%= form_for @post do |f| %>
+        <%= f.hidden_field :post_name %> </h1>
+        <!-- 画像 -->
+        <div class="image-content">
+          <%= image_tag 'photo_space.jpg', id: "preview1" %>
+          <%= f.attachment_field :post_images_images, multiple: true, class: "upimage1" %>
+          <%= javascript_tag do %>
+            $(".upimage1").upimageview('#preview1');
+          <% end %>
+        </div>
+        <div class="horizonal-separator"></div>
+        <!-- タイトル -->
+        <h1 class="headline-title"><%= @post.post_name %><small>by <%= current_user.nickname %></small></h1>
 
-  <!-- 画像 -->
-  <%= image_tag 'photo_space.jpg', size: '280x383', id: "preview1" %>
-  <%= f.attachment_field :post_images_images, multiple: true, class: "upimage1" %>
-  <%= javascript_tag do %>
-    $(".upimage1").upimageview('#preview1');
-  <% end %>
+        <!-- 一言説明 -->
+        <div class="explanation">
+          <h2 class="headline-title">一言説明<small>※必須</small></h2>
+          <div class="explanation-description">
+            <%= f.text_field :explanation, id: :post_explanation, placeholder: "一言説明を入力してください" %>
+          </div>
+        </div>
 
-  <!-- 一言説明 -->
-  <h2>一言説明</h2>
-  <%= f.text_field :explanation, id: :post_explanation, placeholder: "一言説明を入力してください" %>
+        <!-- 材料 -->
+        <div class="material">
+          <h2 class="headline-title">材料</h2>
+          <div class="field">
+            <%= f.fields_for :materials do |material| %>
+              <%= render 'material_fields', f: material %>
+            <% end %>
+          </div>
+          <div class="field">
+            <%= link_to_add_association '追加', f, :materials, data: { association_insertion_method: 'before' } %>
+          </div>
+        </div>
 
-  <!-- 投稿者 -->
-  by <%= current_user.nickname %>
+        <!-- 総額 -->
+        <div class="total_price">
+          <h2 class="headline-title">合計金額<small>※必須</small></h2>
+          <div class="total_price-number">
+            <%= f.number_field :total_price, id: :post_total_price, placeholder: "大体の予算を半角数字で入力してください" %>円
+          </div>
+        </div>
 
-  <!-- 材料,総額 -->
-  <table>
-    <h3>材料</h3>
-    <div class="field">
-      <%= f.fields_for :materials do |material| %>
-        <%= render 'material_fields', f: material %>
-     <% end %>
+        <!-- 工程 -->
+        <div class="steps">
+          <h2 class="headline-title">工程</h2>
+          <ol>
+            <%= f.fields_for :steps do |step| %>
+              <%= render 'step_fields', f: step %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association '追加', f, :steps %>
+            </div>
+          </ol>
+        </div>
+
+        <!-- コツ・ポイント -->
+        <div class="tips">
+          <h2 class="headline-title">コツ・ポイント<small>※必須</small></h2>
+          <div class="tip-description">
+            <%= f.text_area :tip, id: :post_tip, placeholder: "この方法をやるにあたってのコツやポイントを教えてください" %>
+          </div>
+        </div>
+
+        <!-- このレシピの生い立ち -->
+        <div class="reasons">
+          <h2 class="headline-title">この収納術の生い立ち<small>※必須</small></h2>
+          <div class="reason-description">
+            <%= f.text_area :reason, id: :post_reason, placeholder: "この方法を思いついたきっかけ" %>
+          </div>
+        </div>
+
+        <!-- カテゴリ -->
+        <div class="related-categories">
+          <h2 class="headline-title">この収納術が登録されるカテゴリ</h2>
+          <div class="related-category">
+            <%= f.select :category, Post.categories.keys.to_a, class: 'form-control' %>
+          </div>
+        </div>
+        <%= f.submit 'この内容で投稿する', class: "button" %>
+      <% end %>
     </div>
-    <div class="field">
-      <%= link_to_add_association '追加', f, :materials, data: { association_insertion_method: 'before' } %>
-    </div>
-    <h2>トータルプライス</h2>
-      <%= f.number_field :total_price, id: :post_total_price, placeholder: "半角数字で入力してください" %>
-  </table>
-  <h3>工程</h3>
-  <div class="field">
-    <%= f.fields_for :steps do |step| %>
-      <%= render 'step_fields', f: step %>
-    <% end %>
   </div>
-  <div class="field">
-    <%= link_to_add_association '追加', f, :steps, data: { association_insertion_method: 'before' } %>
-  </div>
-  
-  <!-- コツ・ポイント -->
-  <h3>コツ・ポイント</h3>
-  <%= f.text_area :tip, id: :post_tip, placeholder: "この方法をやるにあたってのコツやポイントを教えてください" %>
-
-  <!-- このレシピの生い立ち -->
-  <h3>このレシピの生い立ち</h3>
-  <%= f.text_area :reason, id: :post_reason, placeholder: "この方法を思いついたきっかけ" %>
-
-  <!-- カテゴリ -->
-  <h4>このレシピが登録されているカテゴリ</h4>
-  <%= f.select :category, Post.categories.keys.to_a, class: 'form-control' %>
-  <div class="actions">
-    <%= f.submit 'Back', name: 'back' %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'この内容で投稿する', class: "button" %>
-  </div>
-<% end %>
+</div>

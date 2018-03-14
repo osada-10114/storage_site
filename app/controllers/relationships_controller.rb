@@ -16,7 +16,7 @@ class RelationshipsController < ApplicationController
     @user = User.find(params[:user_id])
     follow = current_user.relationships.find_by!(following_id: @user.id)
     follow.destroy
-    flash[:notice] = "フォロー解除しました"
+    flash[:notice] = "フォローを解除しました"
     redirect_to posts_url
   end
 end

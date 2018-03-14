@@ -13,11 +13,7 @@
     text-decoration: none;
   }
 
-  h3.headline-title {
-
-  }
-
-  .image-content img {
+  #images_show .image-content img {
     width: 560px;
     height: 560px;
   }
@@ -120,34 +116,34 @@
     text-align: right;
   }
 
-  /*instructions*/
-  #images_show .content .instructions {
+  /*steps*/
+  #images_show .content .steps {
     margin: 0 24px 40px 0;
   }
 
 
-  #images_show .content .instructions ol {
+  #images_show .content .steps ol {
     margin-top: 16px;
   }
 
-  #images_show .content .instructions ol li {
+  #images_show .content .steps ol li {
    padding: 8px 0;
    border-bottom: 1px solid #f1f1f2; 
   }
 
-  #images_show .content .instructions ol li .step_image {
+  #images_show .content .steps ol li .step_image {
     display: inline-block;
     line-height: 1.7;
     margin-right: 60px;
   }
-  #images_show .content .instructions ol li .sort_order {
+  #images_show .content .steps ol li .sort_order {
     display: inline;
     font-weight: bold;
     line-height: 1.7;
     width: 30px;
   }
 
-  #images_show .content .instructions ol li .body {
+  #images_show .content .steps ol li .body {
     display: inline;
     line-height: 1.7;
   }
@@ -234,32 +230,31 @@
     background: none;
   }
   
-.category-block {
-  float: left;
-  width: 50%;
-  padding-right: 48px;
-  box-sizing: border-box;
-}
-
-.category-block ul li {
-  margin-bottom: 16px;
-}
-
-.category-block ul li a:hover {
-  background: transparent;
-}
-
-.category-block ul li a {
-  font-size: 18px;
-  color: #8e8e8e;
-}
-
-.category-block ul li a:focus {
-  outline: 0;
-}
-
-
+  .category-block {
+    float: left;
+    width: 50%;
+    padding-right: 48px;
+    box-sizing: border-box;
+  }
+  
+  .category-block ul li {
+    margin-bottom: 16px;
+  }
+  
+  .category-block ul li a:hover {
+    background: transparent;
+  }
+  
+  .category-block ul li a {
+    font-size: 18px;
+    color: #8e8e8e;
+  }
+  
+  .category-block ul li a:focus {
+    outline: 0;
+  }
 </style>
+
 <% breadcrumb :post, @post %>
 <% provide(:title, "詳細") %>
 
@@ -291,9 +286,9 @@
         <div class="favorite-button">
           <% if user_signed_in? && @post.user != current_user %>
             <% if @post.favorited_by? current_user %>
-              <%= link_to "レシピを削除", post_favorites_path(@post), method: :delete, class: "button" %>
+              <%= link_to "収納術を削除", post_favorites_path(@post), method: :delete, class: "button" %>
             <% else %>
-              <%= link_to "レシピを保存", post_favorites_path(@post), method: :post, class: "button" %>
+              <%= link_to "収納術を保存", post_favorites_path(@post), method: :post, class: "button" %>
             <% end %>
             <div id="social_buttons">
               <%= social_share_button_tag(@post.post_name) %>
@@ -321,7 +316,7 @@
 
       <!-- 工程 -->
       <!-- これから作る -->
-      <div class="instructions">
+      <div class="steps">
         <h2 class="headline-title">工程</h2>
         <ol>
           <% @post.steps.each_with_index do |step, i| %>
@@ -346,9 +341,9 @@
         <div class="tip-description"><%= @post.tip %></div>
       </div>
 
-      <!-- このレシピの生い立ち -->
+      <!-- この収納術の生い立ち -->
       <div class="reasons">
-        <h2 class="headline-title">このレシピの生い立ち</h2>
+        <h2 class="headline-title">この収納術の生い立ち</h2>
         <div class="reason-description"><%= @post.reason %></div>
       </div>
 
@@ -386,7 +381,7 @@
 
       <!-- カテゴリ -->
       <div class="related-categories">
-      <h2 class="headline-title">このレシピが登録されているカテゴリ</h2>
+      <h2 class="headline-title">この収納術が登録されているカテゴリ</h2>
       <div class="related-category">
         <%= link_to "#{@post.category}", posts_path(:category => @post.category) %>
       </div>
@@ -403,7 +398,7 @@
 
 
       <!-- ID・公開日・更新日 -->
-      <small>レシピID：<%= @post.id %> 作成日：<%= @post.created_at %> 更新日：<%= @post.updated_at %></small>
+      <small>収納術ID：<%= @post.id %> 作成日：<%= @post.created_at %> 更新日：<%= @post.updated_at %></small>
 
     
 
@@ -416,4 +411,5 @@
       <%= link_to 'Back', posts_path %>
     </div>
   </div>
+</div>
 </div>

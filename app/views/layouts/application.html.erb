@@ -4,6 +4,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <!-- スクリプトファイル -->
     <!-- 入力欄の文字数カウントダウン -->
     <script type="text/javascript">function CountDownLength( idn, str, mnum ) {
@@ -65,9 +66,13 @@
         <div class="breadcrumb-inner"><%= breadcrumbs separator: " &rsaquo; " %></div>
       </div>
       <div class="wrapper">
-    	  <%= yield %>
+        <% if flash[:notice] %>
+            <div class="flash">
+                <%= flash[:notice] %>
+            </div>
+        <% end %>
+        <%= yield %>
       </div>
-
       <%= render "layouts/footer" %>
   	</div>
   </body>

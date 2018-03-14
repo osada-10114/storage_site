@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
 		@favorite = current_user.favorites.build(post: @post)
 
 		if @favorite.save
-			flash[:notice] = "レシピを保存しました"
+			flash[:notice] = "お気に入りに保存しました"
 			redirect_to posts_url
 		else
 			redirect_to posts_url
@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
 	def destroy
 		@favorite = current_user.favorites.find_by!(post_id: params[:post_id])
 		@favorite.destroy
-		flash[:notice] = "レシピを削除しました"
+		flash[:notice] = "お気に入りを削除しました"
 		redirect_to posts_url
 	end
 end
