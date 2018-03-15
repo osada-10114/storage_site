@@ -1,50 +1,124 @@
 <style>
-#form h1 {
-  font-size: 24px;
-  font-weight: bold;
-}
-#form h1 small {
-  font-size: 8px;
-}
-#form h2 {
-  font-size: 20px;
-}
-#form h2 small {
-  font-size: 8px;
-}
-#form .button {
-  margin: 20px auto 0;
-  display: block;
-  width: 200px;
-  background-color: #8888bb;
-  line-height: 44px;
-  text-align: center;
-  font-size: 14px;
-  border-radius: 6px;
-  appearance: none;
-  border: none;
-  color: #fff;
-}
-#form input[type="text"] {
-  width: 80%;
-  border-radius: 4px;
-  line-height: 32px;
-  border: 1px solid #ccc;
-  padding: 0 15px;
-}
-</style>
+  h2 {
+    font-weight: bold;
+  }
+  #new_posts {
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: row nowrap;
+  }
 
-<div id="form">
-  <div class="container">
-    <div class="page-header">
-      <h1>収納術を投稿する
-      <small>あなたの工夫やアイデアを収納術として記録しよう</small></h1>
-    </div>
+  #new_posts .new-post-inner {
+    width: 1008px;
+    padding: 32px 0 80px;
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0 auto;
+  }
+
+  #new_posts .new-post-inner .page-title {
+    font-size: 20px;
+    margin: 0 0 46px;
+    align-self: stretch;
+    display: block;
+    color: #262626;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #007a56;
+    box-sizing: border-box;
+  }
+
+  #new_posts .new-post-inner .input-items {
+    width: 800px;
+    max-width: 100vw;
+    margin: 0;
+    padding: 54px;
+    align-items: center;
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #f1f1f2;
+  }
+
+  #new_posts .new-post-inner .input-items .text-labeled-input {
+    width: 360px;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: auto;
+    padding: 0;
+    margin: 0 0 24px;
+    flex: 0 0 auto;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  #new_posts .new-post-inner .input-items .text-labeled-input .label {
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: #5e5e5e;
+  }
+
+  #new_posts .new-post-inner .input-items .text-labeled-input .input {
+    width: auto;
+    height: 48px;
+    display: block;
+    border: solid 1.2px #cfcfcf;
+    padding: 0 16px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.32em;
+  }
+
+  #new_posts .new-post-inner .input-items .action-button {
+    background-color: #007a56;
+    width: 360px;
+    margin: 12px 0 0;
+    position: relative;
+    height: 40px;
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+
+  .dly-button-root {
+    display: block;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dly-button-root .dly-button-content {
+    background-color: #007a56;
+    border-radius: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+</style>
+<% provide(:title, "新規投稿") %>
+<% breadcrumb :new_post %>
+<div id="new_posts">
+  <div class="new-post-inner">
+    <h2 class="page-title">新規投稿</h2>
     <%= form_for @post, url: {action: 'form2'} do |f| %>
-      <h2>レシピのタイトル<small>※必須</small></h2>
-      <%= f.text_field :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 20);", maxlength: 20, placeholder: "例）水回りの収納術" %>
-      <p id="cdlength1">あと20文字</p>
-      <%= f.submit "材料・作り方の入力に進む", class: "button" %>
+      <div class="input-items">
+        <div class="text-labeled-input">
+          <span class="label">収納術のタイトル</span>
+          <%= f.text_field :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 20);", maxlength: 20, placeholder: "例）水回りの収納術", class: "input" %>
+          <p id="cdlength1">あと20文字</p>
+        </div>
+        <button class="dly-button-root action-button primary">
+          <%= f.submit "材料・作り方の入力に進む", class: "dly-button-content" %>
+        </button>
+      </div>
     <% end %>
   </div>
 </div>

@@ -10,6 +10,12 @@ crumb :post do |post|
 	parent :posts
 end
 
+# 新規投稿ページ
+crumb :new_post do |post|
+	link "新規投稿", new_post_path
+	parent :posts
+end
+
 # 会員登録ページ
 crumb :new_user do |user|
 	link "新規会員登録", new_user_registration_path
