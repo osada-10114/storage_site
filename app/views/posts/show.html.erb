@@ -116,6 +116,16 @@
     text-align: right;
   }
 
+  /*total_price*/
+  #images_show .content .total_price {
+    margin: 0 24px 40px 0;
+  }
+
+  #images_show .content .total_price .total_price-number {
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+
   /*steps*/
   #images_show .content .steps {
     margin: 0 24px 40px 0;
@@ -300,7 +310,7 @@
       <div class="horizonal-separator">
       </div>
 
-      <!-- 材料,総額 -->
+      <!-- 材料 -->
       <div class="material">
         <h2 class="headline-title">材料</h2>
         <ul>        
@@ -310,8 +320,15 @@
               <span class="material-quantity"><%= material.material_quantity %>個</span>
             </li>
           <% end %>
-          <%= @post.total_price %>
         </ul>
+      </div>
+
+      <!-- 総額 -->
+      <div class="total_price">
+        <h2 class="headline-title">合計金額</h2>
+        <div class="total_price-number">
+          <%= @post.total_price %>円
+        </div>
       </div>
 
       <!-- 工程 -->
