@@ -1,26 +1,127 @@
-<h2>Log in</h2>
+<style>
+  h2 {
+    font-weight: bold;
+  }
+  #sessions_new_admin {
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: row nowrap;
+  }
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true %>
+  #sessions_new_admin .sessions-new-admin-inner {
+    width: 1008px;
+    padding: 32px 0 80px;
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0 auto;
+  }
+
+  #sessions_new_admin .sessions-new-admin-inner .page-title {
+    font-size: 20px;
+    margin: 0 0 46px;
+    align-self: stretch;
+    display: block;
+    color: #262626;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #007a56;
+    box-sizing: border-box;
+  }
+
+  #sessions_new_admin .sessions-new-admin-inner .input-items {
+    width: 800px;
+    max-width: 100vw;
+    margin: 0;
+    padding: 54px;
+    align-items: center;
+    flex: 0 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #f1f1f2;
+  }
+
+  #sessions_new_admin .sessions-new-admin-inner .input-items .text-labeled-input {
+    width: 360px;
+    flex-flow: column nowrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    height: auto;
+    padding: 0;
+    margin: 0 0 24px;
+    flex: 0 0 auto;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  #sessions_new_admin .sessions-new-admin-inner .input-items .text-labeled-input .label {
+    font-size: 14px;
+    margin: 0 0 8px;
+    color: #5e5e5e;
+  }
+
+  #sessions_new_admin .sessions-new-admin-inner .input-items .text-labeled-input .input {
+    width: auto;
+    height: 48px;
+    display: block;
+    border: solid 1.2px #cfcfcf;
+    padding: 0 16px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.32em;
+  }
+
+  #sessions_new_admin .sessions-new-admin-inner .input-items .action-button {
+    background-color: #007a56;
+    width: 360px;
+    margin: 12px 0 0;
+    position: relative;
+    height: 40px;
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+
+  .dly-button-root {
+    display: block;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+  }
+
+  .dly-button-root .dly-button-content {
+    background-color: #007a56;
+    border-radius: inherit;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+</style>
+<% provide(:title, "管理者ログイン") %>
+<% breadcrumb :session_admin %>
+<div id="sessions_new_admin">
+  <div class="sessions-new-admin-inner">
+    <h2 class="page-title">管理者ログイン</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="input-items">
+        <div class="text-labeled-input">
+          <span class="label">ニックネーム</span>
+          <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム", class: "input" %>
+        </div>
+        <div class="text-labeled-input">
+          <span class="label">パスワード</span>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "パスワード", class: "input" %>
+        </div>
+        <button class="dly-button-root action-button primary">
+          <%= f.submit "管理者ログイン", class: "dly-button-content" %>
+        </button>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+</div>

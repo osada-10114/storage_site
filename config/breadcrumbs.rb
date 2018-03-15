@@ -28,6 +28,12 @@ crumb :session_user do |user|
 	parent :posts
 end
 
+# 管理者ログインページ
+crumb :session_admin do |admin|
+	link "管理者ログイン", new_admin_session_path
+	parent :posts
+end
+
 # マイページ
 crumb :user do |user|
 	link "マイページ", user_path(user)
