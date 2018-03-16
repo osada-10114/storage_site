@@ -53,11 +53,16 @@
     line-height: 3;
     border-radius: 6px;
     appearance: none;
-    border: none;
-    color: #fff;
-    background-color: green;
+    border: 1px solid #007a56;
+    color: #007a56;
+    background-color: transparent;
     height: 40px;
     cursor: pointer;
+  }
+
+  .favorite-button .button:hover {
+    opacity: 0.5;
+    text-decoration: none;
   }
 
   #social_buttons {
@@ -65,10 +70,6 @@
     position: absolute;
     top: 22px;
     left: 350px;
-  }
-
-  .favorite-button .button:hover {
-    text-decoration: none;
   }
 
   .horizonal-separator {
@@ -296,9 +297,9 @@
         <div class="favorite-button">
           <% if user_signed_in? && @post.user != current_user %>
             <% if @post.favorited_by? current_user %>
-              <%= link_to "収納術を削除", post_favorites_path(@post), method: :delete, class: "button" %>
+              <%= link_to "お気に入りを解除", post_favorites_path(@post), method: :delete, class: "button" %>
             <% else %>
-              <%= link_to "収納術を保存", post_favorites_path(@post), method: :post, class: "button" %>
+              <%= link_to "♡お気に入り", post_favorites_path(@post), method: :post, class: "button" %>
             <% end %>
             <div id="social_buttons">
               <%= social_share_button_tag(@post.post_name) %>
@@ -403,15 +404,7 @@
         <%= link_to "#{@post.category}", posts_path(:category => @post.category) %>
       </div>
 
-      <p>
-        <% if user_signed_in? %>
-          <% if @post.user.followed_by? current_user %>
-            <%= link_to "フォロー解除", user_relationships_path(@post.user), method: :delete %>
-          <% elsif @post.user != current_user %>
-            <%= link_to "フォロー", user_relationships_path(@post.user), method: :post %>
-          <% end %>
-        <% end %>
-      </p>
+      
 
 
       <!-- ID・公開日・更新日 -->

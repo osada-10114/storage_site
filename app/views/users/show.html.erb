@@ -1,39 +1,531 @@
+<style>
+  a:hover {
+    color: #5e5e5e;
+  }
+  #account a {
+  background: transparent;
+  }
+  h2.headline-title {
+    font-size: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cfcfcf;
+    margin: 0;
+    font-weight: bold;
+  }
+  .account-root {
+    min-width: 1008px;
+    background-color: #ffffff;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    width: 100%;
+  }
+  .account-root .section {
+    align-self: stretch;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+  .account-root .section.user-profiles {
+    border-bottom: solid 1px #cfcfcf;
+  }
+  .account-root .section.user-profiles .user-profiles-inner {
+    width: 1008px;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    display: flex;
+    padding: 32px 0;
+  }
+  .account-root .section.user-profiles .user-profiles-inner .user-desc {
+    padding: 0;
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    box-sizing: border-box;
+  }
+  .account-root .section.user-profiles .user-profiles-inner .user-desc .user-display-name {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #262626;
+    height: 20px;
+    margin: 0 0 16px;
+  }
+  .account-root .section.user-profiles .user-profiles-inner .user-desc .user-display-name .follow-button {
+    margin-left: 48px;
+    display: inline-block;
+  }
+  .account-root .section.user-profiles .user-profiles-inner .user-desc .user-display-name .follow-button .button {
+    display: inline-block;
+    width: 292px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 3;
+    border-radius: 6px;
+    appearance: none;
+    border: 1px solid #007a56;
+    color: #007a56;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+  }
+  .account-root .section.user-profiles .user-profiles-inner .user-desc .user-display-name .follow-button .button:hover {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  /*タブの部分*/
+  .account-root .section.nav-tab-button {
+    border-bottom: solid 1px #cfcfcf;
+    background-color: #ffffff;
+    top: 89px;
+  }
+  .account-root .section.nav-tab-button .nav-tab-button-inner {
+    width: 1008px;
+    height: 46px;
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+  }
+  
+  p.router-link-active {
+    cursor: default;
+  }
+
+  .account-root .section.nav-tab-button .nav-tab-button-inner .nav-tab-button-item {
+    box-sizing: border-box;
+    height: 100%;
+    width: 0;
+    flex: 1 0 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .account-root .section.nav-tab-button .nav-tab-button-inner .nav-tab-button-item:hover {
+    background: none;
+    color: #5e5e5e;
+    text-decoration: none;
+    box-shadow: 0 1px 0 0 rgba(0, 0, 0, .25);
+  }
+  .account-root .section.nav-tab-button .nav-tab-button-inner .nav-tab-button-item.router-link-active {
+    color: #007a56;
+    box-shadow: 0 -2px 0 0 #007a56 inset;
+  }
+
+  /*お気に入りタブ*/
+  .account-root .section.user-contents {
+    z-index: 0;
+  }
+  .favorites-root {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .favorites-root .scrollable {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+  }
+  .favorites-root .scrollable .favorite-no-items {
+    width: 1008px;
+    padding: 72px 0 64px;
+    font-size: 16px;
+    line-height: 22px;
+    height: auto;
+  }
+  .favorites-root .scrollable .favorite-items {
+    padding: 92px 0;
+    width: 1032px;
+    flex: 1 0 auto;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  .favorites-root .scrollable .favorite-items .favorite-link {
+    width: 234px;
+    height: 298px;
+    margin: 0 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .favorites-root .scrollable .favorite-items .favorite-link .thumbnail-wrapper {
+    width: 234px;
+    height: 234px;
+    position: relative;
+    background-color: #eeeeee;
+  }
+  .favorites-root .scrollable .favorite-items .favorite-link .thumbnail-wrapper .thumbnail {
+    width: 234px;
+    height: 234px;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .favorites-root .scrollable .favorite-items .favorite-link .title {
+    font-size: 16px;
+    line-height: 20px;
+    display: block;
+    width;: 100%;
+    height: auto;
+    margin: 4px 0 0;
+    position: relative;
+    z-index: 1;
+    color: #262626;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+
+
+
+  /*フォロータブ*/
+  .follows-root {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .follows-root .scrollable {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+  }
+  .follows-root .scrollable .follow-no-users {
+    width: 1008px;
+    padding: 72px 0 64px;
+    font-size: 16px;
+    line-height: 22px;
+    height: auto;
+  }
+  .follows-root .scrollable .follow-users {
+    padding: 46px 0;
+    width: 1032px;
+    height: auto;
+  }
+  .follows-root .scrollable .follow-users .follows {
+    margin-top: 16px;
+  }
+  .follows-root .scrollable .follow-users .follows .follow {
+    line-height: 50px;
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f2;
+  }
+  .follows-root .scrollable .follow-users .follows .follow a {
+    font-size: 14px;
+  }
+  .follows-root .scrollable .follow-users .follows .follow a:hover {
+    background: transparent;
+  }
+  .follows-root .scrollable .follow-users .follows .follow-button {
+    float: right;
+    display: inline-block;
+  }
+  .follows-root .scrollable .follow-users .follows .follow-button .button {
+    display: inline-block;
+    width: 292px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 3;
+    border-radius: 6px;
+    appearance: none;
+    border: 1px solid #007a56;
+    color: #007a56;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+  }
+  .follows-root .scrollable .follow-users .follows .follow-button .button:hover {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  /*フォロワータブ*/
+  .followers-root {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .followers-root .scrollable {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+  }
+  .followers-root .scrollable .follower-no-users {
+    width: 1008px;
+    padding: 72px 0 64px;
+    font-size: 16px;
+    line-height: 22px;
+    height: auto;
+  }
+
+  /*収納術タブ*/
+  .posts-root {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .posts-root .scrollable {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+  }
+  .posts-root .scrollable .post-no-items {
+    width: 1008px;
+    padding: 72px 0 64px;
+    font-size: 16px;
+    line-height: 22px;
+    height: auto;
+  }
+  .posts-root .scrollable .post-items {
+    padding: 92px 0;
+    width: 1032px;
+    flex: 1 0 auto;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  .posts-root .scrollable .post-items .post-link {
+    width: 234px;
+    height: 298px;
+    margin: 0 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .posts-root .scrollable .post-items .post-link .thumbnail-wrapper {
+    width: 234px;
+    height: 234px;
+    position: relative;
+    background-color: #eeeeee;
+  }
+  .posts-root .scrollable .post-items .post-link .thumbnail-wrapper .thumbnail {
+    width: 234px;
+    height: 234px;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .posts-root .scrollable .post-items .post-link .title {
+    font-size: 16px;
+    line-height: 20px;
+    display: block;
+    width;: 100%;
+    height: auto;
+    margin: 4px 0 0;
+    position: relative;
+    z-index: 1;
+    color: #262626;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  /*タブ切り替え*/
+  .vanish {
+    display: none;
+  }
+
+  /*投稿一覧*/
+
+
+</style>
+
 <% provide(:title, "マイページ") %>
 <% breadcrumb :user, @user %>
-<ul>
-    <li>
-      <%= link_to user_path(@user) do %>
-        <div class="text">投稿数</div>
-        <div class="num"><%= @user.posts.count %></div>
-      <% end %>
-    </li>
-    <li>
-    	<%= link_to follows_user_path(@user) do %>
-    		<div class="text">フォロー</div>
-    		<div class="num"><%= @user.followings.count %></div>
-    	<% end %>
-    </li>
-    <li>
-    	<%= link_to followers_user_path(@user) do %>
-    		<div class="text">フォロワー</div>
-    		<div class="num"><%= @user.followers.count %></div>
-    	<% end %>
-    </li>
-    <li>
-      <%= link_to favorites_user_path(@user) do %>
-        <div class="text">いいね一覧</div>
-        <div class="num"><%= @user.favorites.count %></div>
-      <% end %>     
-    </li>
-</ul>
-<% @posts.each do |post| %>
-    <h4 class="user">
-        <span class="user-name">
-          <%= link_to post.user.nickname, user_path(post.user) %>
+<div id="account" class="account-root">
+  <div class="section user-profiles">
+    <div class="user-profiles-inner">
+      <div class="user-desc">
+        <span class="user-display-name">
+          <%= @user.nickname %>
+          <% if user_signed_in? %>
+            <div class="follow-button">
+              <% if @user.followed_by? current_user %>
+                <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete, class: "button" %>
+              <% elsif @user != current_user %>
+                <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "button" %>
+              <% end %>
+            </div>
+          <% end %>
         </span>
-    </h4>
-    <div class="post-explanation">
-        <%= post.explanation %>
+      </div>
     </div>
-<% end %>
-<%= paginate @posts %>
+  </div>
+  <div class="section nav-tab-button">
+    <div class="nav-tab-button-inner">
+      <p class="nav-tab-button-item router-link-exact-active router-link-active">お気に入り</p>
+      <p class="nav-tab-button-item">フォロー</p>
+      <p class="nav-tab-button-item">フォロワー</p>
+      <p class="nav-tab-button-item">収納術</p>
+    </div>
+  </div>
+  <ul class="section user-contents">
+    <li class="favorites-root">
+      <div class="scrollable done">
+        <% if @user.favorites.empty? %>
+          <div class="favorite-no-items">
+            <div class="favorite-no-items-inner">
+              <div class="favorite-no-items-message">
+                あなたのお気に入りはまだありません。<br><br><br><br>
+                お気に入りをして、あなただけの収納術帳を作りませんか？
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="favorite-items">
+          <% @user.favorites.each do |favorite| %>
+            <%= link_to(post_path(favorite.post), class: "favorite-link") do %>
+              <div class="thumbnail-wrapper">
+                <% if favorite.post.post_images.present? %>
+                  <% favorite.post.post_images.each do |image| %>
+                    <%= attachment_image_tag image, :image, :fill, 208, 208, class: "thumbnail" %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', size: '208x208', class: "thumbnail" %>
+                <% end %>
+              </div>
+              <span class="title">
+                <%= favorite.post.post_name %>
+              </span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </li>
+    <li class="follows-root vanish">
+      <div class="scrollable done">
+        <% if @user.followings.empty? %>
+          <div class="follow-no-users">
+            <div class="follow-no-users-inner">
+              <div class="follow-no-users-message">
+                あなたがフォローしているユーザーはまだいません。<br><br><br><br>
+                フォローして、あの人の収納術を参考にしよう！
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="follow-users">
+            <h2 class="headline-title">フォロー一覧</h2>
+            <div class="follows">
+              <% @user.followings.each do |following| %>
+                <div class="follow">
+                  <%= link_to following.nickname, user_path(following) %>
+                  <div class="follow-button">
+                    <% if following.followed_by? current_user %>
+                      <%= link_to "フォロー解除", user_relationships_path(following), method: :delete, class: "button" %>
+                    <% elsif following != current_user %>
+                      <%= link_to "フォローする", user_relationships_path(following), method: :post, class: "button" %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </li>
+    <li class="follows-root vanish">
+      <div class="scrollable done">
+        <% if @user.followers.empty? %>
+          <div class="follow-no-users">
+            <div class="follow-no-users-inner">
+              <div class="follow-no-users-message">
+                あなたをフォローしているユーザーはまだいません。<br><br><br><br>
+                みんなに参考にしてもらえるように収納術を投稿しよう！
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="follow-users">
+            <h2 class="headline-title">フォロワー一覧</h2>
+            <div class="follows">
+              <% @user.followers.each do |follower| %>
+                <div class="follow">
+                  <%= link_to follower.nickname, user_path(follower) %>
+                  <div class="follow-button">
+                    <% if follower.followed_by? current_user %>
+                      <%= link_to "フォロー解除", user_relationships_path(follower), method: :delete, class: "button" %>
+                    <% elsif follower != current_user %>
+                      <%= link_to "フォローする", user_relationships_path(follower), method: :post, class: "button" %>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </li>
+    <li class="posts-root vanish">
+      <div class="scrollable done">
+        <% if @user.posts.empty? %>
+          <div class="post-no-items">
+            <div class="post-no-items-inner">
+              <div class="post-no-items-message">
+                投稿した収納術はまだありません。
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <div class="post-items">
+          <% @posts.each do |post| %>
+            <%= link_to(post_path(post), class: "post-link") do %>
+              <div class="thumbnail-wrapper">
+                <% if post.post_images.present? %>
+                  <% post.post_images.each do |image| %>
+                    <%= attachment_image_tag image, :image, :fill, 208, 208, class: "thumbnail" %>
+                    <% end %>
+                <% else %>
+                  <%= image_tag 'no_image.jpg', size: '208x208', class: "thumbnail" %>
+                <% end %>
+              </div>
+              <span class="title">
+                <%= post.post_name %>
+              </span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+</div>
