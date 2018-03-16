@@ -111,11 +111,11 @@
       <div class="input-items">
         <div class="text-labeled-input">
           <span class="label">ニックネーム</span>
-          <%= f.text_field :nickname, placeholder: "ニックネーム", class: "input" %>
+          <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム", class: "input" %>
         </div>
         <div class="text-labeled-input">
           <span class="label">メールアドレス</span>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "input" %>
+          <%= f.email_field :email, autocomplete: "email", placeholder: "メールアドレス", class: "input" %>
         </div>
         <div class="text-labeled-input">
           <span class="label">パスワード</span>

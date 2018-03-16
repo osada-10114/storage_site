@@ -112,7 +112,7 @@
       <div class="input-items">
         <div class="text-labeled-input">
           <span class="label">収納術のタイトル</span>
-          <%= f.text_field :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 20);", maxlength: 20, placeholder: "例）水回りの収納術", class: "input" %>
+          <%= f.text_field :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 20);", maxlength: 20, placeholder: "例）水回りの収納術", autofocus: true, class: "input" %>
           <p id="cdlength1">あと20文字</p>
         </div>
         <button class="dly-button-root action-button primary">
