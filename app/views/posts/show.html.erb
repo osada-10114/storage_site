@@ -399,27 +399,17 @@
 
       <!-- カテゴリ -->
       <div class="related-categories">
-      <h2 class="headline-title">この収納術が登録されているカテゴリ</h2>
-      <div class="related-category">
-        <%= link_to "#{@post.category}", posts_path(:category => @post.category) %>
+        <h2 class="headline-title">この収納術が登録されているカテゴリ</h2>
+        <div class="related-category">
+          <%= link_to "#{@post.category}", posts_path(:category => @post.category) %>
+        </div>
       </div>
-
-      
-
-
-      <!-- ID・公開日・更新日 -->
-      <small>収納術ID：<%= @post.id %> 作成日：<%= @post.created_at %> 更新日：<%= @post.updated_at %></small>
-
-    
-
       <% if user_signed_in? %>
         <% if current_user.id == @post.user.id %>
-          <%= link_to 'Edit', edit_post_path(@post) %> |
-          <%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に削除しますか？' } %> | 
+          <%= link_to '編集', edit_post_path(@post) %> |
+          <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか？' } %> | 
         <% end %>
       <% end %>
-      <%= link_to 'Back', posts_path %>
     </div>
   </div>
-</div>
 </div>

@@ -26,10 +26,6 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @post.post_images.build
-    6.times do 
-      @post.materials.build
-    end
-    @post.steps.build
   end
 
   # GET /posts/1/edit
@@ -79,6 +75,12 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def form2
+    @post = Post.new(post_params)
+    @post.materials.build
+    @post.steps.build
   end
 
   private
