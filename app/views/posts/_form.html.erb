@@ -1,96 +1,390 @@
 <style>
-  h2 {
+  a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  a:focus {
+    outline: none;
+  } 
+  a:hover {
+    color: #ffffff;
+    outline: 0;
+    text-decoration: none;
+  }
+  a:link {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .float-clear {
+    clear: both;
+  }
+  #posts_new {
+    padding: 32px 0 64px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: #ffffff;
+  }
+  #posts_new > .page-title {
+    width: 1008px;
+    height: auto;
+    padding: 0 0 10px;
+    margin: 0 0 32px;
+    font-size: 20px;
+    color: #262626;
+    border-bottom: 1px solid #007a56;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+  }
+  #posts_new > .page-title .page-title-span {
+    flex: 1 0 auto;
     font-weight: bold;
   }
-  #new_posts {
-    background-color: #ffffff;
+  #posts_new > .page-title .desc {
+    flex: 1 0 auto;
+    text-align: right;
+    font-weight: normal;
+    font-size: 14px;
+  }
+  #posts_new > .form {
+    width: 1008px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  #posts_new > .form > #new_post > .form-group {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group {
+    height: 416px;
+    margin: 0 0 8px;
+    flex-wrap: wrap;
+    padding: 0;
+    width: 100%;
+    align-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .main-images {
+    width: 400px;
+    height: 400px;
+    margin: 8px 16px 8px 0;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .main-images {
+    position: relative;
+  }
+  .dly-image-input-root {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  .dly-image-input-root .preview-wrapper {
+    position: relative;
+  }
+
+  #posts_new > .form > #new_post > .form-group .text-labeled-input {
+    width: 592px;
+    margin: 8px 0;
+    display: flex;
+    flex-flow: column nowrap;
+    position: relative;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.title {
+    flex: 3 0 0;
+    height: 0;
+  }
+  #posts_new > .form > #new_post > .form-group .form-label {
+    font-size: 16px;
+    flex: 0 0 auto;
+    font-weight: bold;
+    line-height: 1.4em;
+    margin: 0 0 4px;
+    display: flex;
+    align-items: flex-end;
+    flex-flow: row nowrap;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.title .input {
+    font-size: 20px;
+    height: 0;
+    min-height: 0;
+    font-weight: bold;
+  }
+  #posts_new > .form > #new_post > .form-group .input {
+    padding: 8px;
+    flex: 1 0 auto;
+    display: block;
+    border: #cfcfcf solid 1px;
+    line-height: 1.7em;
+    box-sizing: border-box;
+    border-radius: 0;
+  }
+  #posts_new > .form > #new_post > .form-group .input:placeholder-shown {
+    color: #cfcfcf;
+  }
+  #posts_new > .form > #new_post > .form-group .text-labeled-input .counter {
+    font-size: 15px;
+    color: #8e8e8e;
+    font-weight: 100;
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.explanation {
+    flex: 5 0 0;
+    height: 0;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.explanation .input{
+    font-size: 14px;
+    height: 0;
+    min-height: 0;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .others {
+    width: 592px;
+    flex-flow: row nowrap;
+    display: flex;
+    flex: 0 0 auto;
+  }
+  #posts_new > .form > #new_post > .form-group.main-images-group .others .text-labeled-input {
+    width: 50%;
+    margin: 8px 16px 8px 0;
+  }
+  #post_category {
+    box-sizing: border-box;
+    border: solid 1px #cfcfcf;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    position: relative;
+    font-size: 16px;
+    padding: 12px 8px;
+    text-align: left;
+    width: 100%;
+  }
+
+  /*materials*/
+  #posts_new > .form > #new_post > .form-group.materials-group {
+    width: 400px;
+    padding: 0;
+    margin: 0 16px 0 0;
+    float: left;
+  }
+  .materials-input-root {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  .materials-input-item-root {
+    margin: 4px 0;
     display: flex;
     flex-flow: row nowrap;
   }
-
-  #new_posts .new-post-inner {
-    width: 1008px;
-    padding: 32px 0 80px;
-    align-items: center;
-    display: flex;
-    flex-flow: column nowrap;
-    margin: 0 auto;
+  .materials-input-item-root .input.material-name {
+    flex: 5 0 auto;
   }
-
-  #new_posts .new-post-inner .page-title {
-    font-size: 20px;
-    margin: 0 0 46px;
-    align-self: stretch;
-    display: block;
-    color: #262626;
-    padding: 0 0 10px;
-    border-bottom: 1px solid #007a56;
-    box-sizing: border-box;
-  }
-
-  #new_posts .new-post-inner .input-items {
-    width: 800px;
-    max-width: 100vw;
-    margin: 0;
-    padding: 54px;
-    align-items: center;
-    flex: 0 0 auto;
-    display: flex;
-    flex-flow: column nowrap;
-    background-color: #f1f1f2;
-  }
-
-  #new_posts .new-post-inner .input-items .text-labeled-input {
-    width: 360px;
-    flex-flow: column nowrap;
-    align-items: stretch;
-    justify-content: flex-start;
-    height: auto;
-    padding: 0;
-    margin: 0 0 24px;
-    flex: 0 0 auto;
-    display: flex;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  #new_posts .new-post-inner .input-items .text-labeled-input .label {
+  .materials-input-item-root .input {
     font-size: 14px;
-    margin: 0 0 8px;
-    color: #5e5e5e;
-  }
-
-  #new_posts .new-post-inner .input-items .text-labeled-input .input {
-    width: auto;
-    height: 48px;
+    height: 36px;
+    width: 0;
+    resize: none;
     display: block;
-    border: solid 1.2px #cfcfcf;
-    padding: 0 16px;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.32em;
+    border: #cfcfcf solid 1px;
+    line-height: 1.7em;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 0;
   }
-
-  #new_posts .new-post-inner .input-items .action-button {
-    background-color: #007a56;
-    width: 360px;
-    margin: 12px 0 0;
+  .materials-input-item-root .input:placeholder-shown {
+    color: #cfcfcf;
+  }
+  .materials-input-item-root .input.material-name {
+    flex: 5 0 aut;
+  }
+  .materials-input-item-root .input.material-quantity {
+    flex: 3 0 auto;
+    text-align: right;
     position: relative;
-    height: 40px;
-    color: #ffffff;
-    border-radius: 4px;
-    font-size: 16px;
+    left: -1px;
   }
-
-
+  .materials-input-item-root .dly-button-root {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    margin-left: 4px;
+    background-color: #eeeeee;
+  }
   .dly-button-root {
     display: block;
     padding: 0;
+    margin: 0;
     border: none;
     cursor: pointer;
   }
+  .materials-input-root .dly-button-root.add {
+    margin: 12px 36px 0;
+    padding: 0;
+    font-size: 16px;
+    width: auto;
+    align-self: stretch;
+    background-color: #cccccc;
+    color: #ffffff;
+  }
+  .dly-button-root.add > .dly-button-content {
+    display: flex;
+    width: 100%;
+    height: 46px;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
 
-  .dly-button-root .dly-button-content {
+  /*steps*/
+  #posts_new > .form > #new_post > .form-group.steps-group {
+    width: 592px;
+    padding: 0;
+    margin: 0;
+  }
+  .steps-input-root {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+  .steps-input-root .steps-input-item-root {
+    margin: 0 0 24px;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+  .sort-order {
+    width: 48px;
+    font-size: 13px;
+    margin-left: 0;
+    flex: 0 0 auto;
+    border: solid 1px #cfcfcf;
+    border-right: none;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    color: #262626;
+  }
+  .sort-order-text:before {
+    counter-increment: number 1;
+    content: counter(number) "";
+  }
+  .steps-input-item-root .body {
+    flex: 1 0 0 ;
+    width: 0;
+    position: relative;
+    height: 168px;
+  }
+  .steps-input-item-root .body .input {
+    font-size: 14px;
+    padding: 8px;
+    flex: 1 0 auto;
+    resize: none;
+    display: block;
+    border: #cfcfcf solid 1px;
+    box-sizing: border-box;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    line-height: 1.4em;
+  }
+  .steps-input-item-root .body .input:placeholder-shown {
+    color: #cfcfcf;
+  }
+  .steps-input-item-root .picture {
+    margin: 0 4px 0 16px;
+    flex: 0 0 auto;
+    border: #cfcfcf solid 1px;
+  }
+  .dly-image-input-root .step {
+    width: 168px;
+    height: 168px;
+  }
+  .steps-input-root .dly-button-root.add {
+    margin: 0 auto;
+    padding: 0;
+    font-size: 16px;
+    width: 360px;
+    align-self: stretch;
+    background-color: #cccccc;
+    color: #ffffff;
+  }
+  .steps-input-root > .dly-button-content {
+    display: flex;
+    width: 100%;
+    height: 46px;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*tips*/
+  #posts_new > .form > #new_post > .form-group.tips-group {
+    padding: 0;
+    width: 100%;
+    margin: 24px 0;
+  }
+  #posts_new > .form > #new_post > .form-group.tips-group .text-labeled-input {
+    width: 100%;
+  }
+  #posts_new > .form > #new_post > .form-group.tips-group .text-labeled-input .input {
+    font-size: 16px;
+    height: 128px;
+    width: 100%;
+  }
+
+  /*reasons*/
+  #posts_new > .form > #new_post > .form-group.reasons-group {
+    padding: 0;
+    width: 100%;
+    margin: 24px 0;
+  }
+  #posts_new > .form > #new_post > .form-group.reasons-group .text-labeled-input {
+    width: 100%;
+  }
+  #posts_new > .form > #new_post > .form-group.reasons-group .text-labeled-input .input {
+    font-size: 16px;
+    height: 128px;
+    width: 100%;
+  }
+
+  /*submit*/
+  #posts_new > .form > #new_post .separator {
+    display: block;
+    width: 100%;
+    height: 1px;
+    box-sizing: border-box;
+    border: none;
+    border-top: solid 1px #007a56;
+    margin: 0;
+  }
+  #posts_new > .form > #new_post > .form-group.agreement-group {
+    font-size: 16px;
+    padding: 64px 0;
+    width: 100%;
+    text-align: center;
+    line-height: 1.7em;
+  }
+  #posts_new > .form > #new_post > .form-group.agreement-group .strong {
+    font-weight: bold;
+  }
+  #posts_new > .form > #new_post > .form-group.submit-group {
+    width: 100%;
+  }
+  #posts_new > .form > #new_post > .form-group.submit-group .dly-button-root {
+    width: 320px;
+    height: 73px;
+    margin: 0 auto;
+    font-size: 18px;
+  }
+  .dly-button-root > .dly-button-content {
+    color: #ffffff;
     background-color: #007a56;
     border-radius: inherit;
     display: flex;
@@ -102,21 +396,113 @@
     cursor: pointer;
   }
 
+
+
+
 </style>
+
 <% provide(:title, "新規投稿") %>
 <% breadcrumb :new_post %>
-<div id="new_posts">
-  <div class="new-post-inner">
-    <h2 class="page-title">新規投稿</h2>
-    <%= form_for @post, url: {action: 'form2'} do |f| %>
-      <div class="input-items">
-        <div class="text-labeled-input">
-          <span class="label">収納術のタイトル</span>
-          <%= f.text_field :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 20);", maxlength: 20, placeholder: "例）水回りの収納術", autofocus: true, class: "input" %>
-          <p id="cdlength1">あと20文字</p>
+<div id="posts_new">
+  <h2 class="page-title">
+    <span class="page-title-span">新規投稿</span>
+    <span class="desc">あなたのアイデアを収納術として投稿しよう！</span>
+  </h2>
+  <div class="form">
+    <%= form_for @post do |f| %>
+      <div class="form-group main-images-group">
+        <div class="main-images">
+          <div class="dly-image-input-root" style="box-shadow: rgb(204, 204, 204) 0px 0px 1px;">
+            <div class="preview-wrapper" style="width: 400px; height: 400px;">
+              <label style="cursor: pointer;">
+                <%= image_tag('photo_space.jpg', id: "preview", size: "400x400") %>
+                <%= f.attachment_field :post_images_images, multiple: true, id: "upimage", style: "display: none;" %>
+                <%= javascript_tag do %>
+                  $("#upimage").upimageview('#preview');
+                <% end %>
+              </label>
+            </div>
+          </div>
         </div>
-        <button class="dly-button-root action-button primary">
-          <%= f.submit "材料・作り方の入力に進む", class: "dly-button-content" %>
+        <div class="text-labeled-input title">
+          <span class="form-label required">
+            収納術のタイトル
+          </span>
+          <%= f.text_area :post_name, id: :post_post_name, "onkeyup" => "CountDownLength('cdlength1', value, 30);", maxlength: 30, placeholder: "例）水回りの収納術", class: "input" %>
+          <span id="cdlength1" class="counter">あと30文字</span>
+        </div>
+        <div class="text-labeled-input explanation">
+          <span class="form-label required">
+            収納術の説明文
+          </span>
+          <%= f.text_area :explanation, id: :post_explanation, "onkeyup" => "CountDownLength('cdlength2', value, 300);", maxlength: 300, placeholder: "一言説明を入力してください", class: "input" %>
+          <span id="cdlength2" class="counter">あと300文字</span>
+        </div>
+        <div class="others">
+          <div class="text-labeled-input total_price">
+            <span class="form-label">大体の予算（単位：円）</span>
+            <%= f.number_field :total_price, id: :post_total_price, placeholder: "大体の予算を半角数字で入力してください", class: "input" %>
+          </div>
+          <div class="text-labeled-input category">
+            <span class="form-label">カテゴリ</span>
+            <%= f.select :category, Post.categories.keys.to_a %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group materials-group">
+        <span class="form-label required">
+          材料
+        </span>
+        <div class="materials-input-root">
+          <%= f.fields_for :materials do |material| %>
+            <%= render 'material_fields', f: material %>
+          <% end %>
+          <button class="dly-button-root add">
+            <%= link_to_add_association '材料を追加する', f, :materials, data: { association_insertion_method: 'before' }, class: "dly-button-content" %>
+          </button>
+        </div>
+      </div>
+      <div class="form-group steps-group">
+        <span class="form-label required">
+          手順
+        </span>
+        <div class="steps-input-root" style="counter-reset: number 0">
+          <%= f.fields_for :steps do |step| %>
+            <%= render 'step_fields', f: step %>
+          <% end %>
+          <button class="dly-button-root add">
+            <%= link_to_add_association '手順を追加する', f, :steps, class: "dly-button-content" %>
+          </button>
+        </div>
+      </div>
+      <div class="float-clear"></div>
+      <div class="form-group tips-group">
+        <div class="text-labeled-input tip">
+          <span class="form-label">コツ・ポイント</span>
+          <%= f.text_area :tip, id: :post_tip, "onkeyup" => "CountDownLength('cdlength3', value, 300);", maxlength: 300, placeholder: "この方法をやるにあたってのコツやポイントを教えてください", class: "input" %>
+          <span id="cdlength3" class="counter">
+            あと300文字
+          </span>
+        </div>
+      </div>
+      <div class="form-group reasons-group">
+        <div class="text-labeled-input reason">
+          <span class="form-label">この収納術の生い立ち</span>
+          <%= f.text_area :reason, id: :post_reason, "onkeyup" => "CountDownLength('cdlength4', value, 300);", maxlength: 300, placeholder: "この方法を思いついたきっかけ", class: "input" %>
+          <span id="cdlength4" class="counter">
+            あと300文字
+          </span>
+        </div>
+      </div>
+      <hr class="separator">
+      <div class="form-group agreement-group">
+        <span class="strong">
+          投稿内容をご確認の上、投稿してください
+        </span>
+      </div>
+      <div class="form-group submit-group">
+        <button class="dly-button-root">
+          <%= f.submit 'この内容で投稿する', class: "dly-button-content" %>
         </button>
       </div>
     <% end %>

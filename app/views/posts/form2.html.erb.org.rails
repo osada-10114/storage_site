@@ -244,11 +244,13 @@
         <%= f.hidden_field :post_name %> </h1>
         <!-- 画像 -->
         <div class="image-content">
-          <%= image_tag 'photo_space.jpg', id: "preview1" %>
-          <%= f.attachment_field :post_images_images, multiple: true, class: "upimage1" %>
-          <%= javascript_tag do %>
-            $(".upimage1").upimageview('#preview1');
-          <% end %>
+          <label>
+            <%= image_tag('photo_space.jpg', id: "preview") %>
+            <%= f.attachment_field :post_images_images, multiple: true, id: "upimage", style: "display: none;" %>
+            <%= javascript_tag do %>
+              $("#upimage").upimageview('#preview');
+            <% end %>
+          </label>
         </div>
         <div class="horizonal-separator"></div>
         <!-- タイトル -->
@@ -286,9 +288,9 @@
         <!-- 工程 -->
         <div class="steps">
           <h2 class="headline-title">工程</h2>
-          <ol>
+          <ol style="counter-reset: number 0;">
             <%= f.fields_for :steps do |step| %>
-              <%= render 'step_fields', f: step %>
+                <%= render 'step_fields', f: step %>
             <% end %>
             <div class="links">
               <%= link_to_add_association '追加', f, :steps %>

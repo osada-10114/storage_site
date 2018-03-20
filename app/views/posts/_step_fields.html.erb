@@ -1,10 +1,18 @@
-<div class="nested-fields">
-	<li class="step-image">
-		<h3 class="headline-title">画像</h3>
-		<%= f.attachment_field :step_image, class: "upimage1" %>
-	</li>
-	<li class="step-description">
-		<%= f.text_field :step_explanation, placeholder: "説明文を入力して下さい" %>
-		<%= link_to_remove_association "削除", f %>
-	</li>
+<div class="nested-fields steps-input-item-root">
+	<div class="sort-order">
+		<span class="sort-order-text"></span>
+	</div>
+	<div class="body">
+		<%= f.text_area :step_explanation, placeholder: "説明文を入力して下さい", class: "input" %>
+	</div>
+	<div class="picture">
+		<div class="dly-image-input-root step">
+			<%= f.attachment_field :step_image %>
+		</div>
+	</div>
+	<div class="controls">
+		<button class="dly-button-root remove">			
+			<%= link_to_remove_association image_tag("remove.jpg", type: "button", class: "dly-button-content"), f %>
+		</button>
+	</div>
 </div>
