@@ -2,56 +2,92 @@
 <% breadcrumb :posts %>
 
 <div id="index">
-<!-- 検索ボックス -->
-<div class="search">
-  <%= form_tag posts_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search], placeholder: "タイトルで収納術を検索（部分一致）" %>
-    <%= submit_tag "検索", :name => nil, class: "button bg_color01" %>
-  <% end %>
-</div>
-
-
-<!-- おすすめの収納術 -->
-<div id="recommend-images-header">
-  <div class="recommend-images-header-inner">
-    <div class="image-recommend-list">
-      <div class="image-recommend-list-content">
-        <a class="image-list-img" href="/posts/2000" style="height: 320px; background: rgb(255, 255, 255);">
-          <div class="image-list-title"><p>壁面に収納スペースを確保！<br>ワイヤーラック</p></div>
-          <img alt="壁面に収納スペースを確保！ワイヤーラック" class="image-list-img" src="kitchen.jpeg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
-        </a>
-      </div>
-      <div class="image-recommend-list-content">
-        <a class="image-list-img" href="/posts/2001" style="height: 320px; background: rgb(255, 255, 255);">
-          <div class="image-list-title">
-            <p>散らかった靴箱もスッキリ！<br>シューズハンガー</p>
-          </div>
-          <img alt="散らかった靴箱もスッキリ！シューズハンガー" class="image-list-img" src="shoebox.jpg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
-        </a>
-      </div>
-      <div class="image-recommend-list-content">
-        <a class="image-list-img" href="/posts/2002" style="height: 320px; background: rgb(255, 255, 255);">
-          <div class="image-list-title">
-            <p>セリア板目表紙を仕切りに！<br>きっちり収納♪</p>
-          </div>
-          <img alt="セリア板目表紙を仕切りに！きっちり収納♪" class="image-list-img" src="desk.jpg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
-        </a>
-      </div>
-    </div>
-    <div class="float-clear"></div>
+  <!-- 検索ボックス -->
+  <div class="search">
+    <%= form_tag posts_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search], placeholder: "タイトルで収納術を検索（部分一致）" %>
+      <%= submit_tag "検索", :name => nil, class: "button bg_color01" %>
+    <% end %>
   </div>
-</div>
-<!-- 新着の収納術１２件 -->
-<div id="content">
-  <div class="content-inner">
-    <% if params[:category].nil? && params[:search].nil? %>
-      <div id="new_post">
-        <h2 class="headline-title header-separator">新着収納術</h2>
-        <div class="list">
-          <% @new_posts.each do |new_post| %>
-            <div class="list-content col-sm-3">
-              <% if new_post.post_images.present? %>
-                <% new_post.post_images.each do |image| %>
+
+  <!-- おすすめの収納術 -->
+  <div id="recommend-images-header">
+    <div class="recommend-images-header-inner">
+      <div class="image-recommend-list">
+        <div class="image-recommend-list-content">
+          <a class="image-list-img" href="/posts/2000" style="height: 320px; background: rgb(255, 255, 255);">
+            <div class="image-list-title"><p>壁面に収納スペースを確保！<br>ワイヤーラック</p></div>
+            <img alt="壁面に収納スペースを確保！ワイヤーラック" class="image-list-img" src="kitchen.jpeg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
+          </a>
+        </div>
+        <div class="image-recommend-list-content">
+          <a class="image-list-img" href="/posts/2001" style="height: 320px; background: rgb(255, 255, 255);">
+            <div class="image-list-title">
+              <p>散らかった靴箱もスッキリ！<br>シューズハンガー</p>
+            </div>
+            <img alt="散らかった靴箱もスッキリ！シューズハンガー" class="image-list-img" src="shoebox.jpg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
+          </a>
+        </div>
+        <div class="image-recommend-list-content">
+          <a class="image-list-img" href="/posts/2002" style="height: 320px; background: rgb(255, 255, 255);">
+            <div class="image-list-title">
+              <p>セリア板目表紙を仕切りに！<br>きっちり収納♪</p>
+            </div>
+            <img alt="セリア板目表紙を仕切りに！きっちり収納♪" class="image-list-img" src="desk.jpg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
+          </a>
+        </div>
+      </div>
+      <div class="float-clear"></div>
+    </div>
+  </div>
+  <!-- 新着の収納術１２件 -->
+  <div id="content">
+    <div class="content-inner">
+      <% if params[:category].nil? && params[:search].nil? %>
+        <div id="new_post">
+          <h2 class="headline-title header-separator">新着収納術</h2>
+          <div class="list">
+            <% @new_posts.each do |new_post| %>
+              <div class="list-content">
+                <%= link_to(post_path(new_post), class: "post-link") do %>
+                  <% if new_post.post_images.present? %>
+                    <% new_post.post_images.each do |image| %>
+                      <%= attachment_image_tag image, :image, :fill, 208, 208 %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag 'no_image.jpg', size: '208x208' %>
+                  <% end %>
+                  <div class="list-info">
+                    <div class="list-title">
+                      <p><%= new_post.post_name %></p>
+                    </div>
+                    <div class="list-explanation">
+                      <%= new_post.explanation %>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+            <div class="float-clear"></div>
+          </div>
+        </div>
+      <% end %>
+  
+      <!-- 投稿一覧 -->
+      <% if params[:category].nil? && params[:search].nil? %>
+        <h2 class="headline-title header-separator">収納術一覧</h2>
+      <% elsif params[:category].present? %>
+        <h2 class="headline-title header-separator"><%= @posts.first.category %>の収納術 <%= @categories.where(category: params[:category]).count %>件</h2>
+      <% else %>
+        <h2 class="headline-title header-separator">「<%= params[:search] %>」の検索結果</h2>
+      <% end %>
+      
+      <div class="list">
+        <% @posts.each do |post| %>
+          <div class="list-content">
+            <%= link_to(post_path(post), class: "post-link") do %>
+              <% if post.post_images.present? %>
+                <% post.post_images.each do |image| %>
                   <%= attachment_image_tag image, :image, :fill, 208, 208 %>
                 <% end %>
               <% else %>
@@ -59,106 +95,70 @@
               <% end %>
               <div class="list-info">
                 <div class="list-title">
-                  <p><%= link_to new_post.post_name, post_path(new_post) %></p>
+                  <p><%= post.post_name %></p>
                 </div>
                 <div class="list-explanation">
-                  <%= new_post.explanation %>
+                  <%= post.explanation %>
                 </div>
               </div>
-            </div>
-          <% end %>
-          <div class="float-clear"></div>
-        </div>
-      </div>
-    <% end %>
-
-<!-- 投稿一覧 -->
-    <% if params[:category].nil? && params[:search].nil? %>
-      <h2 class="headline-title header-separator">収納術一覧</h2>
-    <% elsif params[:category].present? %>
-      <h2 class="headline-title header-separator"><%= @posts.first.category %>の収納術 <%= @categories.where(category: params[:category]).count %>件</h2>
-    <% else %>
-      <h2 class="headline-title header-separator">「<%= params[:search] %>」の検索結果</h2>
-    <% end %>
-    
-    <div class="list">
-      <% @posts.each do |post| %>
-        <div class="list-content col-sm-3">
-          <% if post.post_images.present? %>
-            <% post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 208, 208 %>
             <% end %>
-          <% else %>
-            <%= image_tag 'no_image.jpg', size: '208x208' %>
-          <% end %>
-          <div class="list-info">
-            <div class="list-title">
-              <p><%= link_to post.post_name, post_path(post) %></p>
-            </div>
-            <div class="list-explanation">
-              <%= post.explanation %>
-            </div>
           </div>
-        </div>
-      <% end %>
-      <div class="float-clear"></div>
-      <%= paginate @posts %><br>
-      <%= link_to '投稿する', new_post_path %>
+        <% end %>
+        <div class="float-clear"></div>
+        <%= paginate @posts %><br>
+        <%= link_to '投稿する', new_post_path %>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- カテゴリ検索 -->
-<div id="categories">
-  <div id="categories_inner">
-    <h2>場所から収納術を探す</h2>
-    <div class="category-block">
-      <ul>
-        <li>
-          <a><%= link_to "棚 (#{@categories.where(category: '0').count})", posts_path(:category  => 0) %></a>
-        </li>
-        <li>
-          <a><%= link_to "キッチン (#{@categories.where(category: '1').count})", posts_path(:category => 1) %></a>
-        </li>
-        <li>
-          <a><%= link_to "トイレ (#{@categories.where(category: '2').count})", posts_path(:category => 2) %></a>
-        </li>
-        <li>
-          <a><%= link_to "玄関 (#{@categories.where(category: '3').count})", posts_path(:category => 3) %></a>
-        </li>
-      </ul>
-    </div>
-    <div class="category-block">
-      <ul>
-        <li>
-          <a><%= link_to "デスク (#{@categories.where(category: '4').count})", posts_path(:category => 4) %></a>
-        </li>
-        <li>
-          <a><%= link_to "クローゼット (#{@categories.where(category: '5').count})", posts_path(:category => 5) %></a>
-        </li>
-        <li>
-          <a><%= link_to "テーブル周り (#{@categories.where(category: '6').count})", posts_path(:category => 6) %></a>
-        </li>
-        <li>
-          <a><%= link_to "その他 (#{@categories.where(category: '7').count})", posts_path(:category => 7) %></a>
-        </li>
-      </ul>
-    </div>
-    <div class="float-clear"></div>
-    <div class="to-index-link">
-      <!-- カテゴリ一覧はこちら、カテゴリインデックスパスのリンク -->
+  <!-- カテゴリ検索 -->
+  <div id="categories">
+    <div id="categories_inner">
+      <h2>場所から収納術を探す</h2>
+      <div class="category-block">
+        <ul>
+          <li>
+            <a><%= link_to "棚 (#{@categories.where(category: '0').count})", posts_path(:category  => 0) %></a>
+          </li>
+          <li>
+            <a><%= link_to "キッチン (#{@categories.where(category: '1').count})", posts_path(:category => 1) %></a>
+          </li>
+          <li>
+            <a><%= link_to "トイレ (#{@categories.where(category: '2').count})", posts_path(:category => 2) %></a>
+          </li>
+          <li>
+            <a><%= link_to "玄関 (#{@categories.where(category: '3').count})", posts_path(:category => 3) %></a>
+          </li>
+        </ul>
+      </div>
+      <div class="category-block">
+        <ul>
+          <li>
+            <a><%= link_to "デスク (#{@categories.where(category: '4').count})", posts_path(:category => 4) %></a>
+          </li>
+          <li>
+            <a><%= link_to "クローゼット (#{@categories.where(category: '5').count})", posts_path(:category => 5) %></a>
+          </li>
+          <li>
+            <a><%= link_to "テーブル周り (#{@categories.where(category: '6').count})", posts_path(:category => 6) %></a>
+          </li>
+          <li>
+            <a><%= link_to "その他 (#{@categories.where(category: '7').count})", posts_path(:category => 7) %></a>
+          </li>
+        </ul>
+      </div>
+      <div class="float-clear"></div>
     </div>
   </div>
-</div>
-<!-- サイトについて -->
-<div id="storage-site-about">
-  <div class="storage-site-about-inner">
-    <h3>教えて！みんなの収納術とは</h3>
-    <div class="body">教えて！みんなの収納術では、「部屋をどうにか綺麗にしたい」をテーマに、オリジナリティ溢れるあなたの部屋の片付け方を、手順を追った写真でわかりやすく紹介しています。</div>
-    <h3>写真で紹介の魅力</h3>
-    <div class="body">家の中の同じような部分が散らかっていて困っている人が写真を参考にこういう風に片付けたい、こうなったら今後も使いやすそうといったイメージを容易に想像できるところにあります。</div>
-    <h3>収納術へのこだわり</h3>
-    <div class="body">お金をかけて収納を購入すれば誰だって整理整頓できますが、突っ張り棒やカゴといった、100円均一ショップで購入できる商品や木材等のホームセンターで購入できるようなものを材料として作るため、格安で片付けることができます。</div>
+  <!-- サイトについて -->
+  <div id="storage-site-about">
+    <div class="storage-site-about-inner">
+      <h3>教えて！みんなの収納術とは</h3>
+      <div class="body">教えて！みんなの収納術では、「部屋をどうにか綺麗にしたい」をテーマに、オリジナリティ溢れるあなたの部屋の片付け方を、手順を追った写真でわかりやすく紹介しています。</div>
+      <h3>写真で紹介の魅力</h3>
+      <div class="body">家の中の同じような部分が散らかっていて困っている人が写真を参考にこういう風に片付けたい、こうなったら今後も使いやすそうといったイメージを容易に想像できるところにあります。</div>
+      <h3>収納術へのこだわり</h3>
+      <div class="body">お金をかけて収納を購入すれば誰だって整理整頓できますが、突っ張り棒やカゴといった、100円均一ショップで購入できる商品や木材等のホームセンターで購入できるようなものを材料として作るため、格安で片付けることができます。</div>
+    </div>
   </div>
-</div>
 </div>

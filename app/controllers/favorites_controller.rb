@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
 
 		if @favorite.save
 			flash[:notice] = "お気に入りに保存しました"
-			redirect_to posts_url
+			redirect_back(fallback_location: posts_path)
 		else
 			redirect_to posts_url
 		end
@@ -17,6 +17,6 @@ class FavoritesController < ApplicationController
 		@favorite = current_user.favorites.find_by!(post_id: params[:post_id])
 		@favorite.destroy
 		flash[:notice] = "お気に入りを削除しました"
-		redirect_to posts_url
+		redirect_back(fallback_location: posts_path)
 	end
 end
