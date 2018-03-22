@@ -35,10 +35,4 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:user_id, :post_id, :body)
     end
-
-    def correct_user
-      if @comment.user_id != @comment.post.user_id
-        redirect_to root_path
-      end
-    end
 end

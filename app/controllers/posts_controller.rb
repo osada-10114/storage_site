@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        flash[:notice] = "レシピを編集しました"
+        flash[:notice] = "収納術を編集しました"
         format.html { redirect_to @post }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -74,7 +74,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    flash[:notice] = "レシピを削除しました"
+    flash[:notice] = "収納術を削除しました"
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :no_content }
@@ -95,6 +95,7 @@ class PostsController < ApplicationController
     def correct_user
       post = Post.find(params[:id])
       if current_user.id != post.user.id
+        flash[:notice] = "権限がありません"
         redirect_to root_path
       end
     end
