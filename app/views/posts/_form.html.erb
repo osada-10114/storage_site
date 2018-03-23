@@ -1,414 +1,6 @@
-<style>
-  a {
-    color: #ffffff;
-    text-decoration: none;
-  }
-  a:focus {
-    outline: none;
-  } 
-  a:hover {
-    color: #ffffff;
-    outline: 0;
-    text-decoration: none;
-  }
-  a:link {
-    color: #ffffff;
-    text-decoration: none;
-  }
-  .float-clear {
-    clear: both;
-  }
-  #posts_new {
-    padding: 32px 0 64px;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    background-color: #ffffff;
-  }
-  #posts_new > .page-title {
-    width: 1008px;
-    height: auto;
-    padding: 0 0 10px;
-    margin: 0 0 32px;
-    font-size: 20px;
-    color: #262626;
-    border-bottom: 1px solid #007a56;
-    box-sizing: border-box;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-end;
-  }
-  #posts_new > .page-title .page-title-span {
-    flex: 1 0 auto;
-    font-weight: bold;
-  }
-  #posts_new > .page-title .desc {
-    flex: 1 0 auto;
-    text-align: right;
-    font-weight: normal;
-    font-size: 14px;
-  }
-  #posts_new > .form {
-    width: 1008px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-  #posts_new > .form > #new_post > .form-group {
-    display: flex;
-    flex-flow: column wrap;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group {
-    height: 416px;
-    margin: 0 0 8px;
-    flex-wrap: wrap;
-    padding: 0;
-    width: 100%;
-    align-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .main-images {
-    width: 400px;
-    height: 400px;
-    margin: 8px 16px 8px 0;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .main-images {
-    position: relative;
-  }
-  .dly-image-input-root {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .dly-image-input-root .preview-wrapper {
-    position: relative;
-  }
-
-  #posts_new > .form > #new_post > .form-group .text-labeled-input {
-    width: 592px;
-    margin: 8px 0;
-    display: flex;
-    flex-flow: column nowrap;
-    position: relative;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.title {
-    flex: 3 0 0;
-    height: 0;
-  }
-  #posts_new > .form > #new_post > .form-group .form-label {
-    font-size: 16px;
-    flex: 0 0 auto;
-    font-weight: bold;
-    line-height: 1.4em;
-    margin: 0 0 4px;
-    display: flex;
-    align-items: flex-end;
-    flex-flow: row nowrap;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.title .input {
-    font-size: 20px;
-    height: 0;
-    min-height: 0;
-    font-weight: bold;
-  }
-  #posts_new > .form > #new_post > .form-group .input {
-    padding: 8px;
-    flex: 1 0 auto;
-    display: block;
-    border: #cfcfcf solid 1px;
-    line-height: 1.7em;
-    box-sizing: border-box;
-    border-radius: 0;
-  }
-  #posts_new > .form > #new_post > .form-group .input:placeholder-shown {
-    color: #cfcfcf;
-  }
-  #posts_new > .form > #new_post > .form-group .text-labeled-input .counter {
-    font-size: 15px;
-    color: #8e8e8e;
-    font-weight: 100;
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.explanation {
-    flex: 5 0 0;
-    height: 0;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .text-labeled-input.explanation .input{
-    font-size: 14px;
-    height: 0;
-    min-height: 0;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .others {
-    width: 592px;
-    flex-flow: row nowrap;
-    display: flex;
-    flex: 0 0 auto;
-  }
-  #posts_new > .form > #new_post > .form-group.main-images-group .others .text-labeled-input {
-    width: 50%;
-    margin: 8px 16px 8px 0;
-  }
-  #post_category {
-    box-sizing: border-box;
-    border: solid 1px #cfcfcf;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    position: relative;
-    font-size: 16px;
-    padding: 12px 8px;
-    text-align: left;
-    width: 100%;
-    height: 39px;
-    background-color: #ffffff;
-    border-radius: 0;
-  }
-
-  /*materials*/
-  #posts_new > .form > #new_post > .form-group.materials-group {
-    width: 400px;
-    padding: 0;
-    margin: 0 16px 0 0;
-    float: left;
-  }
-  .materials-input-root {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-  .materials-input-item-root {
-    margin: 4px 0;
-    display: flex;
-    flex-flow: row nowrap;
-  }
-  .materials-input-item-root .input.material-name {
-    flex: 5 0 auto;
-  }
-  .materials-input-item-root .input {
-    font-size: 14px;
-    height: 36px;
-    width: 0;
-    resize: none;
-    display: block;
-    border: #cfcfcf solid 1px;
-    line-height: 1.7em;
-    padding: 8px;
-    box-sizing: border-box;
-    border-radius: 0;
-  }
-  .materials-input-item-root .input:placeholder-shown {
-    color: #cfcfcf;
-  }
-  .materials-input-item-root .input.material-name {
-    flex: 5 0 aut;
-  }
-  .materials-input-item-root .input.material-quantity {
-    flex: 3 0 auto;
-    text-align: right;
-    position: relative;
-    left: -1px;
-  }
-  .materials-input-item-root .dly-button-root {
-    width: 36px;
-    height: 36px;
-    flex: 0 0 auto;
-    margin-left: 4px;
-    background-color: #eeeeee;
-  }
-  .dly-button-root {
-    display: block;
-    padding: 0;
-    margin: 0;
-    border: none;
-    cursor: pointer;
-  }
-  .materials-input-root .dly-button-root.add {
-    margin: 12px 36px 0;
-    padding: 0;
-    font-size: 16px;
-    width: auto;
-    align-self: stretch;
-    background-color: #cccccc;
-    color: #ffffff;
-  }
-  .dly-button-root.add > .dly-button-content {
-    display: flex;
-    width: 100%;
-    height: 46px;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /*steps*/
-  #posts_new > .form > #new_post > .form-group.steps-group {
-    width: 592px;
-    padding: 0;
-    margin: 0;
-  }
-  .steps-input-root {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: stretch;
-  }
-  .steps-input-root .steps-input-item-root {
-    margin: 0 0 24px;
-    display: flex;
-    flex-flow: row nowrap;
-  }
-  .sort-order {
-    width: 48px;
-    font-size: 13px;
-    margin-left: 0;
-    flex: 0 0 auto;
-    border: solid 1px #cfcfcf;
-    border-right: none;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    color: #262626;
-  }
-  .sort-order-text:before {
-    counter-increment: number 1;
-    content: counter(number) "";
-  }
-  .steps-input-item-root .body {
-    flex: 1 0 0 ;
-    width: 0;
-    position: relative;
-    height: 168px;
-  }
-  .steps-input-item-root .body .input {
-    font-size: 14px;
-    padding: 8px;
-    flex: 1 0 auto;
-    resize: none;
-    display: block;
-    border: #cfcfcf solid 1px;
-    box-sizing: border-box;
-    border-radius: 0;
-    width: 100%;
-    height: 100%;
-    line-height: 1.4em;
-  }
-  .steps-input-item-root .body .input:placeholder-shown {
-    color: #cfcfcf;
-  }
-  .steps-input-item-root .picture {
-    margin: 0 4px 0 16px;
-    flex: 0 0 auto;
-    border: #cfcfcf solid 1px;
-  }
-  .dly-image-input-root .step {
-    width: 168px;
-    height: 168px;
-  }
-  .steps-input-root .dly-button-root.add {
-    margin: 0 auto;
-    padding: 0;
-    font-size: 16px;
-    width: 360px;
-    align-self: stretch;
-    background-color: #cccccc;
-    color: #ffffff;
-  }
-  .steps-input-root > .dly-button-content {
-    display: flex;
-    width: 100%;
-    height: 46px;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-  }
-
-  /*tips*/
-  #posts_new > .form > #new_post > .form-group.tips-group {
-    padding: 0;
-    width: 100%;
-    margin: 24px 0;
-  }
-  #posts_new > .form > #new_post > .form-group.tips-group .text-labeled-input {
-    width: 100%;
-  }
-  #posts_new > .form > #new_post > .form-group.tips-group .text-labeled-input .input {
-    font-size: 16px;
-    height: 128px;
-    width: 100%;
-  }
-
-  /*reasons*/
-  #posts_new > .form > #new_post > .form-group.reasons-group {
-    padding: 0;
-    width: 100%;
-    margin: 24px 0;
-  }
-  #posts_new > .form > #new_post > .form-group.reasons-group .text-labeled-input {
-    width: 100%;
-  }
-  #posts_new > .form > #new_post > .form-group.reasons-group .text-labeled-input .input {
-    font-size: 16px;
-    height: 128px;
-    width: 100%;
-  }
-
-  /*submit*/
-  #posts_new > .form > #new_post .separator {
-    display: block;
-    width: 100%;
-    height: 1px;
-    box-sizing: border-box;
-    border: none;
-    border-top: solid 1px #007a56;
-    margin: 0;
-  }
-  #posts_new > .form > #new_post > .form-group.agreement-group {
-    font-size: 16px;
-    padding: 64px 0;
-    width: 100%;
-    text-align: center;
-    line-height: 1.7em;
-  }
-  #posts_new > .form > #new_post > .form-group.agreement-group .strong {
-    font-weight: bold;
-  }
-  #posts_new > .form > #new_post > .form-group.submit-group {
-    width: 100%;
-  }
-  #posts_new > .form > #new_post > .form-group.submit-group .dly-button-root {
-    width: 320px;
-    height: 73px;
-    margin: 0 auto;
-    font-size: 18px;
-  }
-  .submit-group .dly-button-root > .dly-button-content {
-    color: #ffffff;
-    background-color: #007a56;
-    border-radius: inherit;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
-
-
-
-
-</style>
-
-<% provide(:title, "新規投稿") %>
-<% breadcrumb :new_post %>
-<div id="posts_new">
+<div id="posts_new" class="bg_color01">
   <h2 class="page-title">
-    <span class="page-title-span">新規投稿</span>
+    <span class="page-title-span"><%= yield(:page_title) %></span>
     <span class="desc">あなたのアイデアを収納術として投稿しよう！</span>
   </h2>
   <div class="form">
@@ -418,10 +10,16 @@
           <div class="dly-image-input-root" style="box-shadow: rgb(204, 204, 204) 0px 0px 1px;">
             <div class="preview-wrapper" style="width: 400px; height: 400px;">
               <label style="cursor: pointer;">
-                <%= image_tag('photo_space.jpg', id: "preview", size: "400x400") %>
+                <% if @post.post_image_ids.present? %>
+                  <% @post.post_images.each do |image| %>
+                    <%= attachment_image_tag image, :image, :fill, 400, 400, class: "preview" %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag('photo_space.jpg', class: "preview", size: "400x400") %>
+                <% end %>
                 <%= f.attachment_field :post_images_images, multiple: true, id: "upimage", style: "display: none;" %>
                 <%= javascript_tag do %>
-                  $("#upimage").upimageview('#preview');
+                  $("#upimage").upimageview('.preview');
                 <% end %>
               </label>
             </div>
@@ -461,7 +59,7 @@
             <%= render 'material_fields', f: material %>
           <% end %>
           <button class="dly-button-root add">
-            <%= link_to_add_association '材料を追加する', f, :materials, data: { association_insertion_method: 'before' }, class: "dly-button-content" %>
+            <%= link_to_add_association '材料を追加する', f, :materials, data: { association_insertion_method: 'before' }, class: "dly-button-content color_01" %>
           </button>
         </div>
       </div>
@@ -474,7 +72,7 @@
             <%= render 'step_fields', f: step %>
           <% end %>
           <button class="dly-button-root add">
-            <%= link_to_add_association '手順を追加する', f, :steps, class: "dly-button-content" %>
+            <%= link_to_add_association '手順を追加する', f, :steps, class: "dly-button-content color_01" %>
           </button>
         </div>
       </div>
@@ -505,7 +103,7 @@
       </div>
       <div class="form-group submit-group">
         <button class="dly-button-root">
-          <%= f.submit 'この内容で投稿する', class: "dly-button-content" %>
+          <%= f.submit 'この内容で投稿する', class: "dly-button-content bg_color02" %>
         </button>
       </div>
     <% end %>

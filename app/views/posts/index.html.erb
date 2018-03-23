@@ -1,16 +1,14 @@
 <% provide(:title, "投稿一覧") %>
 <% breadcrumb :posts %>
-
 <div id="index">
-  <!-- 検索ボックス -->
+  <!-- search_box -->
   <div class="search">
     <%= form_tag posts_path, :method => 'get' do %>
       <%= text_field_tag :search, params[:search], placeholder: "タイトルで収納術を検索（部分一致）" %>
-      <%= submit_tag "検索", :name => nil, class: "button bg_color01" %>
+      <%= submit_tag "検索", :name => nil, class: "button bg_color02" %>
     <% end %>
   </div>
-
-  <!-- おすすめの収納術 -->
+  <!-- reccomends -->
   <div id="recommend-images-header">
     <div class="recommend-images-header-inner">
       <div class="image-recommend-list">
@@ -40,7 +38,7 @@
       <div class="float-clear"></div>
     </div>
   </div>
-  <!-- 新着の収納術１２件 -->
+  <!-- new_posts -->
   <div id="content">
     <div class="content-inner">
       <% if params[:category].nil? && params[:search].nil? %>
@@ -72,8 +70,7 @@
           </div>
         </div>
       <% end %>
-  
-      <!-- 投稿一覧 -->
+      <!-- index -->
       <% if params[:category].nil? && params[:search].nil? %>
         <h2 class="headline-title header-separator">収納術一覧</h2>
       <% elsif params[:category].present? %>
@@ -81,7 +78,6 @@
       <% else %>
         <h2 class="headline-title header-separator">「<%= params[:search] %>」の検索結果</h2>
       <% end %>
-      
       <div class="list">
         <% @posts.each do |post| %>
           <div class="list-content">
@@ -106,12 +102,10 @@
         <% end %>
         <div class="float-clear"></div>
         <%= paginate @posts %><br>
-        <%= link_to '投稿する', new_post_path %>
       </div>
     </div>
   </div>
-
-  <!-- カテゴリ検索 -->
+  <!-- categories -->
   <div id="categories">
     <div id="categories_inner">
       <h2>場所から収納術を探す</h2>
@@ -150,7 +144,7 @@
       <div class="float-clear"></div>
     </div>
   </div>
-  <!-- サイトについて -->
+  <!-- about -->
   <div id="storage-site-about">
     <div class="storage-site-about-inner">
       <h3>教えて！みんなの収納術とは</h3>

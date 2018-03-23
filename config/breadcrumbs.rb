@@ -16,6 +16,15 @@ crumb :new_post do |post|
 	parent :posts
 end
 
+# 投稿編集ページ
+crumb :edit_post do |post|
+	@post =Post.find(params[:id]) 
+	link @post.category, posts_path(:category => @post.category)
+	link @post.post_name, post_path(@post)
+	link "編集画面", edit_post_path
+	parent :posts
+end
+
 # 会員登録ページ
 crumb :new_user do |user|
 	link "新規会員登録", new_user_registration_path
