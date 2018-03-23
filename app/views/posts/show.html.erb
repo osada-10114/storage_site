@@ -1,305 +1,32 @@
-<style>
-  a {
-    color: #5e5e5e;
-    text-decoration: none;
-  }
-
-  a:focus {
-    outline: 0;
-  }
-
-  a:hover {
-    outline: 0;
-    text-decoration: none;
-  }
-
-  #images_show .image-content img {
-    width: 560px;
-    height: 560px;
-  }
-
-  #images_show .content h1 {
-    font-size: 26px;
-    margin: 40px 0 8px;
-    line-height: 1.4;
-  }
-
-  #images_show .content h1 small {
-    margin-left: 30px;
-  }
-
-  #images_show .content .explanation {
-    padding-top: 8px;
-    line-height: 1.5;
-    width: 672px;
-  }
-
-  #images_show .content .favorite {
-    position: relative;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 16px;
-  }
-
-  .favorite-button {
-    display: inline-block;
-  }
-
-  .favorite-button .button {
-    display: inline-block;
-    width: 292px;
-    font-size: 14px;
-    text-align: center;
-    line-height: 3;
-    border-radius: 6px;
-    appearance: none;
-    border: 1px solid #007a56;
-    color: #007a56;
-    background-color: transparent;
-    height: 40px;
-    cursor: pointer;
-  }
-
-  .favorite-button .button:hover {
-    opacity: 0.5;
-    text-decoration: none;
-  }
-
-  #social_buttons {
-    display: inline-block;
-    position: absolute;
-    top: 22px;
-    left: 350px;
-  }
-
-  .horizonal-separator {
-    border-top: 1px solid #cfcfcf;
-    margin: 16px 25px 40px 0;
-  }
-
-  #images_show .content h2.headline-title {
-    font-size: 20px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #cfcfcf;
-    margin: 0;
-    font-weight: bold;
-  }
-
-  #images_show .content h3.headline-title {
-    font-size: 15px;
-    padding: 8px 0;
-    margin: 0;
-    font-weight: bold;
-  }
-
-  /*material*/
-  #images_show .content .material {
-    margin: 0 24px 40px 0;
-  }
-
-  .material ul {
-    margin-top: 16px;
-  }
-
-  .material ul li {
-    padding: 8px;
-    border-bottom: 1px solid #f1f1f2;
-  }
-
-  .material ul li .material-title {
-    display: inline-block;
-    width: 59.5%;
-  }
-
-  .material ul li .material-quantity {
-    display: inline-block;
-    width: 40%;
-    text-align: right;
-  }
-
-  /*total_price*/
-  #images_show .content .total_price {
-    margin: 0 24px 40px 0;
-  }
-
-  #images_show .content .total_price .total_price-number {
-    margin-top: 16px;
-    line-height: 1.5;
-  }
-
-  /*steps*/
-  #images_show .content .steps {
-    margin: 0 24px 40px 0;
-  }
-
-
-  #images_show .content .steps ol {
-    margin-top: 16px;
-  }
-
-  #images_show .content .steps ol li {
-   padding: 8px 0;
-   border-bottom: 1px solid #f1f1f2; 
-  }
-
-  #images_show .content .steps ol li .step_image {
-    display: inline-block;
-    line-height: 1.7;
-    margin-right: 60px;
-  }
-  #images_show .content .steps ol li .sort_order {
-    display: inline;
-    font-weight: bold;
-    line-height: 1.7;
-    width: 30px;
-  }
-
-  #images_show .content .steps ol li .body {
-    display: inline;
-    line-height: 1.7;
-  }
-
-  /*tips*/
-
-  #images_show .content .tips {
-    margin: 0 24px 40px 0;
-  }
-
-  #images_show .content .tips .tip-description {
-    margin-top: 16px;
-    line-height: 1.5;
-  }
-
-  /*reasons*/
-
-  #images_show .content .reasons {
-    margin: 0 24px 40px 0;
-  }
-
-  #images_show .content .reasons .reason-description {
-    margin-top: 16px;
-    line-height: 1.5;
-  }
-
-  /*comment*/
-
-  #images_show .content .comments {
-    margin: 0 24px 40px 0;
-  }
-
-  .image-comment-list-content {
-    border-top: 1px solid #eeeeee;
-  }
-
-  .image-comment-list-info {
-    width: 552px;
-    margin: 16px 0 16px 16px;
-  }
-
-  .display-name {
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  .display-name .body {
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 8px 0;
-  }
-
-  .image-comment-list-info .published-date {
-    font-size: 11px;
-    color: #5e5e5e;
-  }
-
-  .form {
-    width: 60%;
-    height: 64px;
-    border-radius: 5px;
-    border: 1px solid #cfcfcf;
-  }
-
-  textarea:focus {
-    outline: 0;
-  }
-
-  /*related-categories*/
-
-  .related-categories {
-    margin: 0 24px 40px 0;
-  }
-
-  .related-category {
-    margin-top: 16px;
-    height: 40px;
-    vertical-align: middle;
-    padding-right: 24px;
-  }
-
-  .related-category a:hover {
-    border-bottom: 1px solid #5e5e5e;
-    background: none;
-  }
-  
-  .category-block {
-    float: left;
-    width: 50%;
-    padding-right: 48px;
-    box-sizing: border-box;
-  }
-  
-  .category-block ul li {
-    margin-bottom: 16px;
-  }
-  
-  .category-block ul li a:hover {
-    background: transparent;
-  }
-  
-  .category-block ul li a {
-    font-size: 18px;
-    color: #8e8e8e;
-  }
-  
-  .category-block ul li a:focus {
-    outline: 0;
-  }
-</style>
-
 <% breadcrumb :post, @post %>
 <% provide(:title, "詳細") %>
-
 <div id="images_show">
   <div class="content">
     <div class="content-inner">
-
-      <!-- 画像 -->
+      <!-- images -->
       <div class="image-content">
         <% if @post.post_images.present? %>
           <% @post.post_images.each do |image| %>
-            <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+            <%= attachment_image_tag image, :image, :fill, 560, 560 %>
           <% end %>
         <% else %>
-          <%= image_tag 'no_image.jpg', size: '200x200' %>
+          <%= image_tag 'no_image.jpg' %>
         <% end %>
       </div>
-
-      <!-- タイトル -->
+      <!-- title -->
       <h1 class="headline-title"><%= @post.post_name %><small>by <%= link_to @post.user.nickname, user_path(@post.user_id) %> さん</small></h1>
-
-      <!-- 一言説明 -->
+      <!-- explanation -->
       <p class="explanation">
         <%= @post.explanation %>
       </p>
-
-      <!-- 保存ボタン SNSシェアボタン-->
+      <!-- sns, favorites -->
       <div class="favorite">
         <div class="favorite-button">
           <% if user_signed_in? && @post.user != current_user %>
             <% if @post.favorited_by? current_user %>
-              <%= link_to "お気に入りを解除", post_favorites_path(@post), method: :delete, class: "button" %>
+              <%= link_to "お気に入りを解除", post_favorites_path(@post), method: :delete, class: "button color_02" %>
             <% else %>
-              <%= link_to "♡お気に入り", post_favorites_path(@post), method: :post, class: "button" %>
+              <%= link_to "♡お気に入り", post_favorites_path(@post), method: :post, class: "button color_02" %>
             <% end %>
             <div id="social_buttons">
               <%= social_share_button_tag(@post.post_name) %>
@@ -307,11 +34,8 @@
           <% end %>
         </div>        
       </div>
-
-      <div class="horizonal-separator">
-      </div>
-
-      <!-- 材料 -->
+      <div class="horizonal-separator"></div>
+      <!-- materials -->
       <div class="material">
         <h2 class="headline-title">材料</h2>
         <ul>        
@@ -323,16 +47,14 @@
           <% end %>
         </ul>
       </div>
-
-      <!-- 総額 -->
+      <!-- total_price -->
       <div class="total_price">
         <h2 class="headline-title">合計金額</h2>
         <div class="total_price-number">
           <%= @post.total_price %>円
         </div>
       </div>
-
-      <!-- 手順 -->
+      <!-- steps -->
       <div class="steps">
         <h2 class="headline-title">手順</h2>
         <ol>
@@ -351,52 +73,47 @@
           <% end %>
         </ol>
       </div>
-
-      <!-- コツ・ポイント -->
+      <!-- tips -->
       <div class="tips">
         <h2 class="headline-title">コツ・ポイント</h2>
         <div class="tip-description"><%= @post.tip %></div>
       </div>
-
-      <!-- この収納術の生い立ち -->
+      <!-- reasons -->
       <div class="reasons">
         <h2 class="headline-title">この収納術の生い立ち</h2>
         <div class="reason-description"><%= @post.reason %></div>
       </div>
-
-      <!-- コメント入力欄 -->
+      <!-- comments -->
       <div class="comments">
         <h2 class="headline-title">コメント (<%= @post.comments.count %>)</h2>
-          <% if @comments.present? %>
-            <% @comments.each do |comment| %>
-              <div class="image-comment-list-content">
-                <div class="image-comment-list-info">
-                  <div class="display-name">
-                    <%= link_to comment.user.nickname, user_path(comment.user) %>    
-                  </div>
-                  <div class="body">
-                    <span><%= comment.body %></span><br>
-                  </div>
-                  <div class="published-date">
-                    <%= time_ago_in_words(comment.created_at) %>前
-                  </div>
-                  <% if user_signed_in? && comment.user == current_user %>
-                    <p><%= link_to 'Delete', comment_path(comment), method: :delete %></p>
-                  <% end %>
+        <% if @comments.present? %>
+          <% @comments.each do |comment| %>
+            <div class="image-comment-list-content">
+              <div class="image-comment-list-info">
+                <div class="display-name">
+                  <%= link_to comment.user.nickname, user_path(comment.user) %>    
                 </div>
+                <div class="body">
+                  <span><%= comment.body %></span><br>
+                </div>
+                <div class="published-date">
+                  <%= time_ago_in_words(comment.created_at) %>前
+                </div>
+                <% if user_signed_in? && comment.user == current_user %>
+                  <p><%= link_to 'Delete', comment_path(comment), method: :delete %></p>
+                <% end %>
               </div>
-            <% end %>
-
-            <div class="float-clear"></div>
-          <% else %>
-            <p>コメントがありません。</p>
+            </div>
           <% end %>
-            <% if user_signed_in? %>
-              <%= render 'comments/form' %>
-            <% end %>
+          <div class="float-clear"></div>
+        <% else %>
+          <p>コメントがありません。</p>
+        <% end %>
+        <% if user_signed_in? %>
+          <%= render 'comments/form' %>
+        <% end %>
       </div>
-
-      <!-- カテゴリ -->
+      <!-- categories -->
       <div class="related-categories">
         <h2 class="headline-title">この収納術が登録されているカテゴリ</h2>
         <div class="related-category">
@@ -406,7 +123,7 @@
       <% if user_signed_in? %>
         <% if current_user.id == @post.user.id %>
           <%= link_to '編集', edit_post_path(@post) %> |
-          <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか？' } %> | 
+          <%= link_to '削除', @post, method: :delete, data: { confirm: '本当に削除しますか？' } %>
         <% end %>
       <% end %>
     </div>

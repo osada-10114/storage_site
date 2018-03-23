@@ -1,0 +1,32 @@
+<li class="posts-root vanish">
+  <div class="scrollable done">
+    <% if @user.posts.empty? %>
+      <div class="post-no-items">
+        <div class="post-no-items-inner">
+          <div class="post-no-items-message">
+            投稿した収納術はまだありません。<br><br><br><br>収納術を投稿して、みんなに教えてあげよう！
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="post-items">
+        <% @posts.each do |post| %>
+          <%= link_to(post_path(post), class: "post-link") do %>
+            <div class="thumbnail-wrapper">
+              <% if post.post_images.present? %>
+                <% post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 208, 208, class: "thumbnail" %>
+                <% end %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: '208x208', class: "thumbnail" %>
+              <% end %>
+            </div>
+            <span class="title">
+              <%= post.post_name %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</li>

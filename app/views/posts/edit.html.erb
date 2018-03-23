@@ -1,10 +1,4 @@
-<h1>Editing Post</h1>
-
+<% provide(:title, '編集画面') %>
+<% provide(:page_title, '編集する') %>
+<% breadcrumb :edit_post %>
 <%= render 'form', post: @post %>
-
-<% if user_signed_in? %>
-  <% if current_user.id == @post.user.id %>
-  	<%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に削除しますか？' } %> | 
-  <% end %>
-<% end %>
-<%= link_to 'Back', posts_path %>

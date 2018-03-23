@@ -1,0 +1,64 @@
+<li class="follows-root vanish">
+  <div class="scrollable done">
+    <% if @user.followings.empty? %>
+      <div class="follow-no-users">
+        <div class="follow-no-users-inner">
+          <div class="follow-no-users-message">
+            あなたがフォローしているユーザーはまだいません。<br><br><br><br>
+            フォローして、あの人の収納術を参考にしよう！
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="follow-users">
+        <h2 class="headline-title">フォロー一覧</h2>
+        <div class="follows">
+          <% @user.followings.each do |following| %>
+            <div class="follow">
+              <%= link_to following.nickname, user_path(following) %>
+              <div class="follow-button">
+                <% if following.followed_by? current_user %>
+                  <%= link_to "フォロー解除", user_relationships_path(following), method: :delete, class: "button color_02" %>
+                <% elsif following != current_user %>
+                  <%= link_to "フォローする", user_relationships_path(following), method: :post, class: "button color_02" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</li>
+<li class="follows-root vanish">
+  <div class="scrollable done">
+    <% if @user.followers.empty? %>
+      <div class="follow-no-users">
+        <div class="follow-no-users-inner">
+          <div class="follow-no-users-message">
+            あなたをフォローしているユーザーはまだいません。<br><br><br><br>
+            みんなに参考にしてもらえるように収納術を投稿しよう！
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="follow-users">
+        <h2 class="headline-title">フォロワー一覧</h2>
+        <div class="follows">
+          <% @user.followers.each do |follower| %>
+            <div class="follow">
+              <%= link_to follower.nickname, user_path(follower) %>
+              <div class="follow-button">
+                <% if follower.followed_by? current_user %>
+                  <%= link_to "フォロー解除", user_relationships_path(follower), method: :delete, class: "button color_02" %>
+                <% elsif follower != current_user %>
+                  <%= link_to "フォローする", user_relationships_path(follower), method: :post, class: "button color_02" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</li>

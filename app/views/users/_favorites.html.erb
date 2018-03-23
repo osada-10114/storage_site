@@ -1,0 +1,33 @@
+<li class="favorites-root">
+  <div class="scrollable done">
+    <% if @user.favorites.empty? %>
+      <div class="favorite-no-items">
+        <div class="favorite-no-items-inner">
+          <div class="favorite-no-items-message">
+            あなたのお気に入りはまだありません。<br><br><br><br>
+                お気に入りをして、あなただけの収納術帳を作りませんか？
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="favorite-items">
+        <% @user.favorites.each do |favorite| %>
+          <%= link_to(post_path(favorite.post), class: "favorite-link") do %>
+            <div class="thumbnail-wrapper">
+              <% if favorite.post.post_images.present? %>
+                <% favorite.post.post_images.each do |image| %>
+                    <%= attachment_image_tag image, :image, :fill, 208, 208, class: "thumbnail" %>
+                <% end %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: '208x208', class: "thumbnail" %>
+              <% end %>
+            </div>
+            <span class="title">
+              <%= favorite.post.post_name %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</li>
