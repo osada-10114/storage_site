@@ -366,9 +366,6 @@
     border-radius: 5px;
     border: 1px solid #cfcfcf;
   }
-  textarea:focus {
-    outline: 0;
-  }
 
   //related-categories
   .related-categories {
@@ -626,6 +623,9 @@
     background-color: #cccccc;
     color: #ffffff;
   }
+  .materials-input-root .dly-button-root.add a:hover {
+    text-decoration: none;
+  }
   .dly-button-root.add .dly-button-content {
     display: flex;
     width: 100%;
@@ -707,6 +707,9 @@
     align-self: stretch;
     background-color: #cccccc;
     color: #ffffff;
+  }
+  .steps-input-root .dly-button-root.add a:hover {
+    text-decoration: none;
   }
   .steps-input-root .dly-button-content {
     display: flex;
