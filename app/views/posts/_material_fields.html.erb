@@ -1,6 +1,6 @@
 <div class="nested-fields materials-input-item-root">
 	<%= f.text_field :material_name, placeholder: "材料名", class: "input material-name empty" %>
-	<%= f.number_field :material_quantity, placeholder: "個数", class: "input material-quantity empty" %>
+	<%= f.text_field :material_quantity, placeholder: "個数", class: "input material-quantity empty" %>
 	<button class="dly-button-root remove" tabindex="-1">
 		<%= link_to_remove_association image_tag("remove.jpg", type: "button", class: "dly-button-content"), f %>
 	</button>

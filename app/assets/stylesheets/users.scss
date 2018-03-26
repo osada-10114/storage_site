@@ -311,9 +311,6 @@
   }
 
   // tab-button
-  .vanish {
-    display: none;
-  }
   .account-root .section.nav-tab-button {
     border-bottom: solid 1px #cfcfcf;
     top: 89px;
@@ -350,10 +347,17 @@
     color: #007a56;
     box-shadow: 0 -2px 0 0 #007a56 inset;
   }
-  // favorites
   .account-root .section.user-contents {
     z-index: 0;
   }
+  .account-root .section.user-contents li {
+    display: none;
+  }
+  .account-root .section.user-contents li:first-child {
+    display: block;
+  }
+
+  // favorites
   .favorites-root {
     display: flex;
     flex-flow: row nowrap;
@@ -425,6 +429,7 @@
     letter-spacing: 0.5px;
     text-align: center;
   }
+
   // follows
   .follows-root {
     display: flex;
@@ -489,6 +494,7 @@
     opacity: 0.5;
     text-decoration: none;
   }
+
   // followers
   .followers-root {
     display: flex;
@@ -513,6 +519,7 @@
     line-height: 22px;
     height: auto;
   }
+  
   // posts
   .posts-root {
     display: flex;

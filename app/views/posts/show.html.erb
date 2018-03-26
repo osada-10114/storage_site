@@ -42,7 +42,7 @@
           <% @post.materials.each_with_index do |material, i| %>
             <li>
               <span class="material-title"><%= i + 1 %>. <%= material.material_name %></span>
-              <span class="material-quantity"><%= material.material_quantity %>個</span>
+              <span class="material-quantity"><%= material.material_quantity %></span>
             </li>
           <% end %>
         </ul>
