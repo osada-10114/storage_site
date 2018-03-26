@@ -40,10 +40,12 @@
         <h2 class="headline-title">材料</h2>
         <ul>        
           <% @post.materials.each_with_index do |material, i| %>
-            <li>
-              <span class="material-title"><%= i + 1 %>. <%= material.material_name %></span>
-              <span class="material-quantity"><%= material.material_quantity %></span>
-            </li>
+            <% unless material.material_name.empty? %>
+              <li>
+                <span class="material-title"><%= i + 1 %>. <%= material.material_name %></span>
+                <span class="material-quantity"><%= material.material_quantity %></span>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>
@@ -59,17 +61,19 @@
         <h2 class="headline-title">手順</h2>
         <ol>
           <% @post.steps.each_with_index do |step, i| %>
-            <li>
-              <div class="step_image">
-                <%= attachment_image_tag step, :step_image, :fill, 136, 142 %>
-              </div>
-              <div class="sort_order">
-                <%= i + 1 %>. 
-              </div>
-              <div class="body">
-                <%= step.step_explanation %>
-              </div>
-            </li>
+            <% unless step.step_explanation.empty? %>
+              <li>
+                <div class="step_image">
+                  <%= attachment_image_tag step, :step_image, :fill, 136, 142 %>
+                </div>
+                <div class="sort_order">
+                  <%= i + 1 %>. 
+                </div>
+                <div class="body">
+                  <%= step.step_explanation %>
+                </div>
+              </li>
+            <% end %>
           <% end %>
         </ol>
       </div>
