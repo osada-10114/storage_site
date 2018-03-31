@@ -51,7 +51,11 @@ end
 
 # マイページ
 crumb :user do |user|
-	link "マイページ", user_path(user)
+	if current_user == user
+		link "マイページ", user_path(user)
+	else
+		link "#{user.nickname}さんのページ", user_path(user)
+	end
 	parent :posts
 end
 

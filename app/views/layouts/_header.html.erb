@@ -47,19 +47,6 @@
               <br>マイページ
             <% end %>
           </li>
-        <% elsif admin_signed_in? %>
-          <li>
-            <%= link_to(destroy_admin_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}) do %>
-              <span>Logout</span>
-              <br>ログアウト
-            <% end %>
-          </li>
-          <li>
-            <%= link_to(users_path) do %>
-              <span>Users</span>
-              <br>ユーザー一覧
-            <% end %>
-          </li>
         <% else %>
           <li>
             <%= link_to(new_user_registration_path) do %>
@@ -71,12 +58,6 @@
             <%= link_to(new_user_session_path) do %>
               <span>Login</span>
               <br>ログイン
-            <% end %>
-          </li>
-          <li>
-            <%= link_to(new_admin_session_path) do %>
-              <span>Admin</span>
-              <br>管理者用
             <% end %>
           </li>
           <li>

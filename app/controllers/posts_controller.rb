@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :correct_user_or_admin, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -92,11 +92,13 @@ class PostsController < ApplicationController
       params.require(:post).permit(:post_name, :total_price, :explanation, :category, :tip, :reason, :user_id, post_images_images: [], materials_attributes:[ :id, :material_name, :material_quantity, :post_id, :_destroy], steps_attributes:[ :id, :step_explanation, :step_image, :post_id, :_destroy])
     end
 
-    def correct_user
+    def correct_user_or_admin
       post = Post.find(params[:id])
-      if current_user.id != post.user.id
-        flash[:notice] = "権限がありません"
-        redirect_to root_path
+      unless current_user.admin?
+        if current_user.id != post.user.id
+          flash[:notice] = "権限がありません"
+          redirect_to posts_path
+        end
       end
     end
 end

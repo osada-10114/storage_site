@@ -20,4 +20,10 @@ class UsersController < ApplicationController
 	def followers
     @user = User.find(params[:id])
 	end
+
+  def user_destroy
+    @user = User.find_by(id: params[:user_id])
+    @user.destroy
+    redirect_to posts_url
+  end
 end

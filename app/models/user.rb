@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :nickname, presence: true
   
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :comments
   has_many :favorites, dependent: :destroy
   has_many :relationships, foreign_key: :follower_id
