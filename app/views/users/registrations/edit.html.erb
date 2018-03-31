@@ -3,8 +3,8 @@
 <div id="registrations_edit" class="bg_color01">
   <div class="registration-edit-inner">
     <h2 class="page-title">プロフィール変更</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <div class="input-items">
+    <div class="input-items">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <div class="text-labeled-input">
           <span class="label color_03">ニックネーム</span>
           <%= f.text_field :nickname, autofocus: true, class: "input" %>
@@ -20,7 +20,10 @@
         <button class="dly-button-root action-button primary color_01">
           <%= f.submit "プロフィールを変更する", class: "dly-button-content bg_color02" %>
         </button>
-      </div>
-    <% end %>
+      <% end %>
+      <button class="dly-button-root action-button primary">
+        <%= link_to "退会する", registration_path(resource_name), data: { confirm: "本当に退会しますか？" }, method: :delete, class: "dly-button-content color_01 bg_color04" %>
+      </button>
+    </div>
   </div>
 </div>

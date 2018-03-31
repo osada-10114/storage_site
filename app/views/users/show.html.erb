@@ -8,7 +8,11 @@
           <%= @user.nickname %>
           <% if user_signed_in? %>
             <div class="follow-button">
-              <% if @user.followed_by? current_user %>
+              <% if current_user.admin? %>
+                <% unless @user.admin? %>
+                  <%= link_to "このユーザーを削除する", user_destroy_path(@user, user_id: @user.id), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "button color_01 bg_color04" %>
+                <% end %>
+              <% elsif @user.followed_by? current_user %>
                 <%= link_to "フォロー解除", user_relationships_path(@user), method: :delete, class: "button color_02" %>
               <% elsif @user != current_user %>
                 <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "button color_02" %>

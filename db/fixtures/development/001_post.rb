@@ -7,6 +7,6 @@
 		post.category = 1
 		post.tip = "#{i + 1}番目の初期データのコツ"
 		post.reason = "#{i + 1}番目の初期データを作成した理由"
-		post.user_id = 1
+		post.user_id = 2
 	end
 end

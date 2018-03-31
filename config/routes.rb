@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
   resources :comments
-  devise_for :admins, controllers: {
-  	sessions: 		 'admins/sessions',
-  	passwords: 		 'admins/passwords',
-  	registrations: 'admins/registrations'
-  }
   devise_for :users, controllers: {
   	sessions: 		 'users/sessions',
   	passwords: 		 'users/passwords',
@@ -21,5 +16,6 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   root 'home#index'
+  delete '/user_destroy' => 'users#user_destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

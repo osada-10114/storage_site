@@ -4,11 +4,4 @@
 		<%= link_to user.nickname, user_path(user) %>
 		<span>@<%= user.nickname %></span>
 	</div>
-	<div class="follow-unfollow">
-		<% if user.followed_by? current_user %>
-			<%= link_to "フォロー解除", user_relationships_path(user), method: :delete %>
-		<% elsif user != current_user %>
-			<%= link_to "フォロー", user_relationships_path(user), method: :post %>
-		<% end %>
-	</div>
 <% end %>
