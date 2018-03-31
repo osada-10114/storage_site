@@ -5,6 +5,18 @@
   .sd-only {
     display: block;
   }
+  body {
+    width: 100%;
+    background: #f1f1f2;
+    color: #262626;
+    line-height: 1em;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+  }
   a:hover {
     text-decoration: none !important;
   }
@@ -14,6 +26,8 @@
 	.main {
     margin-top: 52px;
   }
+
+  // menubar
   #menubar {
     display: block !important;
     background-color: #fff;
@@ -37,11 +51,27 @@
     padding: 0 12px;
     font-size: 14px;
   }
+  #breadcrumb {
+    height: 40px;
+    overflow: hidden;
+  }
+  .breadcrumb-inner {
+    width: 100%;
+    padding: 0;
+  }
+  .breadcrumb-inner a, .breadcrumb-inner span {
+    font-size: 14px;
+    line-height: 3;
+  }
   .wrapper {
     width: 100%;
     margin: 0 auto;
     z-index: 0;
   }
+
+  // index.html
+
+
 	.search {
     height: 40px;
 		padding-top: 0;
@@ -139,6 +169,25 @@
     font-size: 14px;
     text-shadow: 0 1px 1px #5e5e5e;
     line-height: 1.4;
+  }
+
+
+  // show.html
+
+
+  .content {
+    width: 100%;
+    background: #fff;
+  }
+  #images_show {
+    background: #f1f1f2;
+  }
+  #images_show .image-content {
+    position: relative;
+  }
+  #images_show .image-content img {
+    width: 100%;
+    height: auto;
   }
 
 
