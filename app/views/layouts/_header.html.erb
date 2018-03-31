@@ -1,34 +1,92 @@
-<header class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-inner" style="flex-flow: row nowrap; align-items: stretch; width: 100%; height: 50px;">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample8">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/posts" style="margin-left: 48px"></a>
-      </div>
-      <div class="collapse navbar-collapse" id="navbarEexample8">
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-            <li><%= link_to "プロフィール変更", edit_user_registration_path %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} %></li>
-            <li><%= link_to "投稿する", new_post_path %></li>
-            <li><%= link_to "投稿一覧", posts_path %></li>
-            <li><%= link_to "マイページ", user_path(current_user) %></li>
-          <% elsif admin_signed_in? %>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} %></li>
-            <li><%= link_to "ユーザー一覧", users_path %></li>
-          <% else %>
-            <li><%= link_to "新規登録", new_user_registration_path %></li>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
-            <li><%= link_to "管理者ログイン", new_admin_session_path %></li>
-            <li><%= link_to "投稿一覧", posts_path %></li>
-          <% end %>
-        </ul>
-      </div>
+<style>
+  
+</style>
+<header class="navbar navbar-inverse navbar-fixed-top white">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar" style="background-color: white;"></span>
+        <span class="icon-bar" style="background-color: white;"></span>
+        <span class="icon-bar" style="background-color: white;"></span>
+      </button>
+      <a class="navbar-brand" href="/posts">
+        <img class="img-responsive middle" src="logo.png" alt="logo" id="logo">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right" id="top-menu">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to(edit_user_registration_path) do %>
+              <span>Profiles</span>
+              <br>プロフィール
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}) do %>
+              <span>Logout</span>
+              <br>ログアウト
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(new_post_path) do %>
+              <span>NewPost</span>
+              <br>新規投稿
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(posts_path) do %>
+              <span>Index</span>
+              <br>収納術一覧
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(user_path(current_user)) do %>
+              <span>MyPage</span>
+              <br>マイページ
+            <% end %>
+          </li>
+        <% elsif admin_signed_in? %>
+          <li>
+            <%= link_to(destroy_admin_session_path, method: :delete, data: {confirm: "ログアウトしますか？"}) do %>
+              <span>Logout</span>
+              <br>ログアウト
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(users_path) do %>
+              <span>Users</span>
+              <br>ユーザー一覧
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to(new_user_registration_path) do %>
+              <span>Signup</span>
+              <br>会員登録
+             <% end %>
+          </li>
+          <li>
+            <%= link_to(new_user_session_path) do %>
+              <span>Login</span>
+              <br>ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(new_admin_session_path) do %>
+              <span>Admin</span>
+              <br>管理者用
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(posts_path) do %>
+              <span>Index</span>
+              <br>収納術一覧
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </header>
