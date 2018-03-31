@@ -77,7 +77,7 @@
       <% if params[:category].nil? && params[:search].nil? %>
         <h2 class="headline-title header-separator">収納術一覧</h2>
       <% elsif params[:category].present? && @posts.empty? %>
-        <p>該当のカテゴリの収納術はまだありません</p>
+        <p><br>指定したカテゴリの収納術はまだありません</p>
       <% elsif params[:category].present? %>
         <h2 class="headline-title header-separator"><%= @posts.first.category %>の収納術 <%= @categories.where(category: params[:category]).count %>件</h2>
       <% else %>
