@@ -9,18 +9,31 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="main">
+      <div id="menubar" style="display: none;">
+        <ul>
+          <li><%= link_to "新着", posts_path, class: "color_03" %></li>
+          <li><%= link_to "棚", posts_path(:category => 0), class: "color_03" %></li>
+          <li><%= link_to "キッチン", posts_path(:category => 1), class: "color_03" %></li>
+          <li><%= link_to "トイレ", posts_path(:category => 2), class: "color_03" %></li>
+          <li><%= link_to "玄関", posts_path(:category => 3), class: "color_03" %></li>
+          <li><%= link_to "デスク", posts_path(:category => 4), class: "color_03" %></li>
+          <li><%= link_to "クローゼット", posts_path(:category => 5), class: "color_03" %></li>
+          <li><%= link_to "テーブル周り", posts_path(:category => 6), class: "color_03" %></li>
+          <li><%= link_to "その他", posts_path(:category => 7), class: "color_03" %></li>
+        </ul>
+      </div>
       <div id="breadcrumb">
         <div class="breadcrumb-inner"><%= breadcrumbs separator: " &rsaquo; " %></div>
       </div>
       <div class="wrapper">
         <% if flash[:notice] %>
-            <div class="flash bg_color02 color_01">
-                <%= flash[:notice] %>
-            </div>
+          <div class="flash bg_color02 color_01">
+            <%= flash[:notice] %>
+          </div>
         <% end %>
         <%= yield %>
       </div>
       <%= render "layouts/footer" %>
-  	</div>
+  	 </div>
   </body>
 </html>

@@ -55,13 +55,16 @@
                   <% else %>
                     <%= image_tag 'no_image.jpg', size: '208x208' %>
                   <% end %>
-                  <div class="list-info">
+                  <div class="list-info pc-only">
                     <div class="list-title">
                       <p><%= new_post.post_name %></p>
                     </div>
                     <div class="list-explanation">
                       <%= new_post.explanation %>
                     </div>
+                  </div>
+                  <div class="list-title sd-only">
+                    <p><%= new_post.post_name %></p>
                   </div>
                 <% end %>
               </div>
@@ -73,6 +76,8 @@
       <!-- index -->
       <% if params[:category].nil? && params[:search].nil? %>
         <h2 class="headline-title header-separator">収納術一覧</h2>
+      <% elsif params[:category].present? && @posts.empty? %>
+        <p>該当のカテゴリの収納術はまだありません</p>
       <% elsif params[:category].present? %>
         <h2 class="headline-title header-separator"><%= @posts.first.category %>の収納術 <%= @categories.where(category: params[:category]).count %>件</h2>
       <% else %>
@@ -89,13 +94,16 @@
               <% else %>
                 <%= image_tag 'no_image.jpg', size: '208x208' %>
               <% end %>
-              <div class="list-info">
+              <div class="list-info pc-only">
                 <div class="list-title">
                   <p><%= post.post_name %></p>
                 </div>
                 <div class="list-explanation">
                   <%= post.explanation %>
                 </div>
+              </div>
+              <div class="list-title sd-only">
+                <p><%= post.post_name %></p>
               </div>
             <% end %>
           </div>
@@ -112,32 +120,32 @@
       <div class="category-block">
         <ul>
           <li>
-            <a><%= link_to "棚 (#{@categories.where(category: '0').count})", posts_path(:category  => 0) %></a>
+            <%= link_to "棚 (#{@categories.where(category: '0').count})", posts_path(:category  => 0) %>
           </li>
           <li>
-            <a><%= link_to "キッチン (#{@categories.where(category: '1').count})", posts_path(:category => 1) %></a>
+            <%= link_to "キッチン (#{@categories.where(category: '1').count})", posts_path(:category => 1) %>
           </li>
           <li>
-            <a><%= link_to "トイレ (#{@categories.where(category: '2').count})", posts_path(:category => 2) %></a>
+            <%= link_to "トイレ (#{@categories.where(category: '2').count})", posts_path(:category => 2) %>
           </li>
           <li>
-            <a><%= link_to "玄関 (#{@categories.where(category: '3').count})", posts_path(:category => 3) %></a>
+            <%= link_to "玄関 (#{@categories.where(category: '3').count})", posts_path(:category => 3) %>
           </li>
         </ul>
       </div>
       <div class="category-block">
         <ul>
           <li>
-            <a><%= link_to "デスク (#{@categories.where(category: '4').count})", posts_path(:category => 4) %></a>
+            <%= link_to "デスク (#{@categories.where(category: '4').count})", posts_path(:category => 4) %>
           </li>
           <li>
-            <a><%= link_to "クローゼット (#{@categories.where(category: '5').count})", posts_path(:category => 5) %></a>
+            <%= link_to "クローゼット (#{@categories.where(category: '5').count})", posts_path(:category => 5) %>
           </li>
           <li>
-            <a><%= link_to "テーブル周り (#{@categories.where(category: '6').count})", posts_path(:category => 6) %></a>
+            <%= link_to "テーブル周り (#{@categories.where(category: '6').count})", posts_path(:category => 6) %>
           </li>
           <li>
-            <a><%= link_to "その他 (#{@categories.where(category: '7').count})", posts_path(:category => 7) %></a>
+            <%= link_to "その他 (#{@categories.where(category: '7').count})", posts_path(:category => 7) %>
           </li>
         </ul>
       </div>

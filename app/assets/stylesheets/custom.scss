@@ -36,6 +36,9 @@
   }
 
 	//contents
+	.sd-only {
+		display: none;
+	}
 	body {
 		color: #262626;
 		font-family: Helvetica,HiraKakuProN-W3,'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
@@ -57,7 +60,7 @@
     clear: both;
   }
 	.main {
-		margin-top: 51px;
+		margin-top: 80px;
 	}
 	.wrapper {
 		position: relative;
@@ -108,11 +111,7 @@
 
 	// header
 	header {
-  	.logo {
-    	background: url("logo.png") no-repeat top;
-    	float: left;
-    	width: 70%;
-  	}
+		border-bottom: 1px solid #cfcfcf !important;
 	}
 
 	// footer
