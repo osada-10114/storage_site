@@ -595,3 +595,52 @@
     letter-spacing: 0.5px;
     text-align: center;
   }
+
+
+// index.html
+
+
+  .users-index {
+    padding: 46px 0;
+    width: 1032px;
+    height: auto;
+  }
+  .users-index h2.headline-title {
+    font-size: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #cfcfcf;
+    margin: 0;
+    font-weight: bold;
+  }
+  .users-index .users {
+    margin-top: 16px;
+  }
+  .users-index .users .user {
+    line-height: 50px;
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f2;
+  }
+  .users-index .users .user a {
+    font-size: 14px;
+  }
+  .users-index .users .delete-button {
+    float: right;
+    display: inline-block;
+  }
+  .users-index .users .delete-button .button {
+    display: inline-block;
+    width: 292px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 3;
+    border-radius: 6px;
+    appearance: none;
+    border: 1px solid #007a56;
+    background-color: transparent;
+    height: 40px;
+    cursor: pointer;
+  }
+  .users-index .users .delete-button .button:hover {
+    opacity: 0.5;
+    text-decoration: none;
+  }

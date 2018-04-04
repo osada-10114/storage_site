@@ -1,7 +1,17 @@
 <% provide(:title, "ユーザー一覧") %>
-<% @users.each do |user| %>
-	<div>
-		<%= link_to user.nickname, user_path(user) %>
-		<span>入会日：<%= user.created_at.strftime('%Y年%m月%d日') %></span>
+<div class="users-index">
+	<h2 class="headline-title">ユーザー一覧</h2>
+	<div class="users">
+		<% @users.each do |user| %>
+			<div class="user">
+				<%= link_to user.nickname, user_path(user) %> | 
+				<span>入会日：<%= user.created_at.strftime('%Y年%m月%d日') %></span>
+				<% unless user.admin? %>
+					<div class="delete-button">
+						<%= link_to "削除", user_destroy_path(user, user_id: user.id), data: { confirm: "本当に削除しますか？" }, method: :delete, class: "button color_01 bg_color04" %>
+					</div>
+					<% end %>
+			</div>
+		<% end %>
 	</div>
-<% end %>
+</div>
