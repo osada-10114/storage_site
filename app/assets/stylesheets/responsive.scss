@@ -280,6 +280,15 @@
   .steps-input-root .steps-input-item-root {
     margin: 0 0 16px;
   }
+  .sort-order {
+    width: 25px;
+    font-size: 11px;
+    margin-left: 8px;
+  }
+  .steps-input-item-root .body .input {
+    font-size: 12px;
+    padding: 4px
+  }
 
   // tips
   #posts_new .form .form-group.tips-group {
@@ -381,5 +390,14 @@
   #account .posts-root .scrollable .post-items .post-link .title {
     font-size: 12px;
     line-height: 16px;
+  }
+
+
+  // users/index.html
+
+
+  .users-index {
+    width: 100vw !important;
+    padding: 16px 8px 24px !important;
   }
 }
