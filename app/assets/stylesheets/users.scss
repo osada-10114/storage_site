@@ -316,7 +316,10 @@
   // tab-button
   .account-root .section.nav-tab-button {
     border-bottom: solid 1px #cfcfcf;
-    top: 89px;
+    top: 81px;
+    position: sticky;
+    background-color: #ffffff;
+    z-index: 1000;
   }
   .account-root .section.nav-tab-button .nav-tab-button-inner {
     width: 1008px;
@@ -405,6 +408,10 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
+  }
+  .favorites-root .scrollable .favorite-items .favorite-link:hover {
+    opacity: 0.8;
+    text-decoration: none;
   }
   .favorites-root .scrollable .favorite-items .favorite-link .thumbnail-wrapper {
     width: 234px;
@@ -496,31 +503,6 @@
   .follows-root .scrollable .follow-users .follows .follow-button .button:hover {
     opacity: 0.5;
     text-decoration: none;
-  }
-
-  // followers
-  .followers-root {
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-  .followers-root .scrollable {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    height: auto;
-    overflow-x: hidden;
-  }
-  .followers-root .scrollable .follower-no-users {
-    width: 1008px;
-    padding: 72px 0 64px;
-    font-size: 16px;
-    line-height: 22px;
-    height: auto;
   }
   
   // posts
