@@ -68,7 +68,7 @@
     z-index: 0;
   }
 
-  // index.html
+  // posts/index.html
 
 
 	.search {
@@ -171,7 +171,7 @@
   }
 
 
-  // show.html
+  // posts/show.html
 
 
   .content {
@@ -190,4 +190,80 @@
   }
 
 
+  // users/show.html
+
+
+  #account {
+    min-width: 0px;
+  }
+  #account .section.nav-tab-button {
+    top: 52px;
+  }
+  #account .section.nav-tab-button .nav-tab-button-inner {
+    width: 100%;
+  }
+
+  // favorites
+  #account .favorites-root .scrollable .favorite-no-items {
+    width: 100vw;
+    padding: 16px 8px 24px;
+  }
+  #account .favorites-root .scrollable .favorite-items {
+    width: 100vw;
+    padding: 16px 8px 24px;
+  }
+  #account .favorites-root .scrollable .favorite-items .favorite-link {
+    width: calc(50vw - 12px);
+    height: calc(50vw + 44px);
+    margin: 0.4px;
+  }
+  #account .favorites-root .scrollable .favorite-items .favorite-link .thumbnail-wrapper {
+    width: calc(50vw - 12px);
+    height: calc(50vw - 12px);
+  }
+  #account .favorites-root .scrollable .favorite-items .favorite-link .thumbnail-wrapper .thumbnail {
+    width: calc(50vw - 12px);
+    height: calc(50vw - 12px);
+  }
+  #account .favorites-root .scrollable .favorite-items .favorite-link .title {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  // follows
+  #account .follows-root .scrollable .follow-no-users {
+    width: 100vw;
+    padding: 16px 8px 24px;
+  }
+  #account .follows-root .scrollable .follow-users {
+    width: 100vw;
+    padding: 16px 8px 24px;
+  }
+
+  // posts
+  #account .posts-root .scrollable .post-no-items {
+    width: 100vw;
+    padding: 16px 8px 24px;
+  }
+  #account .posts-root .scrollable .post-items {
+    width: 100vw;
+    padding: 16px 8px 24px;
+  }
+  #account .posts-root .scrollable .post-items .post-link {
+    width: calc(50vw - 12px);
+    height: calc(50vw + 44px);
+    margin: 0.4px;
+  }
+  #account .posts-root .scrollable .post-items .post-link .thumbnail-wrapper {
+    width: calc(50vw - 12px);
+    height: calc(50vw - 12px);
+  }
+  #account .posts-root .scrollable .post-items .post-link .thumbnail-wrapper .thumbnail {
+    width: calc(50vw - 12px);
+    height: calc(50vw - 12px);
+  }
+  #account .posts-root .scrollable .post-items .post-link .title {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
