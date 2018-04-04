@@ -47,6 +47,14 @@
               <br>マイページ
             <% end %>
           </li>
+          <% if current_user.admin? %>
+            <li>
+              <%= link_to(users_path) do %>
+                <span>Users</span>
+                <br>ユーザー一覧
+              <% end %>
+            </li>
+          <% end %>
         <% else %>
           <li>
             <%= link_to(new_user_registration_path) do %>

@@ -104,7 +104,7 @@
                   <%= time_ago_in_words(comment.created_at) %>前
                 </div>
                 <% if user_signed_in? && comment.user == current_user %>
-                  <p><%= link_to 'Delete', comment_path(comment), method: :delete %></p>
+                  <p><%= link_to '削除', comment_path(comment), method: :delete, data: { confirm: 'コメントを削除しますか？' } %></p>
                 <% end %>
               </div>
             </div>
