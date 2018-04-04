@@ -551,6 +551,10 @@
     justify-content: flex-start;
     position: relative;
   }
+  .posts-root .scrollable .post-items .post-link:hover {
+    opacity: 0.8;
+    text-decoration: none;
+  }
   .posts-root .scrollable .post-items .post-link .thumbnail-wrapper {
     width: 234px;
     height: 234px;
