@@ -171,6 +171,45 @@
     line-height: 1.4;
   }
 
+  // categories
+  #categories {
+    width: 100%;
+    background: #fff;
+    padding: 0;
+  }
+  #categories h2 {
+    background: #fff;
+    height: 43px;
+    padding: 4px 16px !important;
+    line-height: 33px;
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    overflow: hidden;
+    margin: 0 !important;
+    font-size: 14px !important;
+  }
+  .category-inner {
+    padding: 0;
+    width: 100%;
+  }
+  .category-block {
+    padding-top: 16px;
+  }
+  .category-block ul li a {
+    font-size: 14px;
+  }
+
+  // about
+  #storage-site-about {
+    width: 100%;
+    background: #fff;
+    padding: 0;
+  }
+  .storage-site-about-inner {
+    padding: 0;
+    width: 100%;
+  }
+
 
   // posts/show.html
 
