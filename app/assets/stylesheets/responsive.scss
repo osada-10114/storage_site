@@ -1,4 +1,4 @@
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .pc-only {
     display: none;
   }
@@ -62,6 +62,11 @@
     font-size: 14px;
     line-height: 3;
   }
+  .breadcrumb-inner .breadcrumbs {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
   .wrapper {
     width: 100%;
     margin: 0 auto;
@@ -77,7 +82,7 @@
 		padding-top: 0;
 	}
 	.search .button {
-    margin-left: 30px;
+    margin: 0;
     display: inline-block;
     width: 10%;
     font-size: 14px;
@@ -228,6 +233,16 @@
     width: 100%;
     height: auto;
   }
+  #images_show .content .explanation {
+    width: auto;
+  }
+  .material ul li .material-title {
+    width: 58%;
+  }
+  #social_buttons {
+    right: 10px;
+    left: auto;
+  }
 
 
   // posts/form.html
@@ -319,6 +334,9 @@
   .steps-input-root .steps-input-item-root {
     margin: 0 0 16px;
   }
+  .steps-input-root .steps-input-item-root .picture {
+    margin: 0;
+  }
   .sort-order {
     width: 25px;
     font-size: 11px;
@@ -388,6 +406,7 @@
   #account .favorites-root .scrollable .favorite-items .favorite-link .thumbnail-wrapper .thumbnail {
     width: calc(50vw - 12px);
     height: calc(50vw - 12px);
+    border: none;
   }
   #account .favorites-root .scrollable .favorite-items .favorite-link .title {
     font-size: 12px;
@@ -425,10 +444,60 @@
   #account .posts-root .scrollable .post-items .post-link .thumbnail-wrapper .thumbnail {
     width: calc(50vw - 12px);
     height: calc(50vw - 12px);
+    border: none;
   }
   #account .posts-root .scrollable .post-items .post-link .title {
     font-size: 12px;
     line-height: 16px;
+  }
+
+
+  // users/registrations_new.html
+
+
+  #registrations_new .registration-new-inner {
+    width: 100vw !important;
+    padding: 0 !important;
+  }
+  #registrations_new .registration-new-inner .page-title {
+    width: 100%;
+    height: 42px;
+    padding: 16px 12px 8px !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+  }
+
+
+  // users/registrations_edit.html
+
+
+
+  #registrations_edit .registration-edit-inner {
+    width: 100vw !important;
+    padding: 0 !important;
+  }
+  #registrations_edit .registration-edit-inner .page-title {
+    width: 100%;
+    height: 42px;
+    padding: 16px 12px 8px !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+  }
+
+
+  // users/sessions_new.html
+
+
+  #sessions_new .session-new-inner {
+    width: 100vw !important;
+    padding: 0 !important;
+  }
+  #sessions_new .session-new-inner .page-title {
+    width: 100%;
+    height: 42px;
+    padding: 16px 12px 8px !important;
+    margin: 0 !important;
+    font-size: 18px !important;
   }
 
 
@@ -438,5 +507,18 @@
   .users-index {
     width: 100vw !important;
     padding: 16px 8px 24px !important;
+  }
+  .users-index .users .delete-button .button {
+    width: auto !important;
+    padding: 0 30px;
+  }
+
+
+  // users/show.html
+
+
+  #account .section.user-profiles .user-profiles-inner {
+    width: 100%;
+    align-items: center;
   }
 }

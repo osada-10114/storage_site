@@ -63,14 +63,19 @@
           <% @post.steps.each_with_index do |step, i| %>
             <% unless step.step_explanation.empty? %>
               <li>
-                <div class="step_image">
-                  <%= attachment_image_tag step, :step_image, :fill, 136, 142 %>
-                </div>
                 <div class="sort_order">
                   <%= i + 1 %>. 
                 </div>
                 <div class="body">
-                  <%= step.step_explanation %>
+                  <div class="step_image">
+                    <% if step.step_image.present? %>
+                      <%= attachment_image_tag step, :step_image, :fill, 136, 142 %>
+                    <% else %>
+                      <%= image_tag 'no_image.jpg', size: '136x142' %>
+                    <% end %>
+                  </div>
+                  <span>
+                  <%= step.step_explanation %></span>
                 </div>
               </li>
             <% end %>
