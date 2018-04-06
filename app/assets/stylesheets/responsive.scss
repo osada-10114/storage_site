@@ -72,6 +72,12 @@
     margin: 0 auto;
     z-index: 0;
   }
+  h2.headline-title {
+    width: 100% !important;
+    height: 42px !important;
+    padding: 16px 0 8px !important;
+    font-size: 18px !important;
+  }
 
 
   // posts/index.html
@@ -236,6 +242,27 @@
   #images_show .content .explanation {
     width: auto;
   }
+  #images_show .content .material {
+    margin: 0;
+  }
+  #images_show .content .total_price {
+    margin: 0;
+  }
+  #images_show .content .steps {
+    margin: 0;
+  }
+  #images_show .content .tips {
+    margin: 0;
+  }
+  #images_show .content .reasons {
+    margin: 0;
+  }
+  #images_show .content .comments {
+    margin: 0;
+  }
+  #images_show .form {
+    width: 100%;
+  }
   .material ul li .material-title {
     width: 58%;
   }
@@ -321,14 +348,14 @@
   // materials
   #posts_new .form .form-group.materials-group {
     width: 100%;
-    padding: 12px;
+    padding-left: 12px;
     margin: 8px 0;
   }
 
   // steps
   #posts_new .form .form-group.steps-group {
     width: 100%;
-    padding: 12px;
+    padding-left: 12px;
     margin: 8px 0;
   }
   .steps-input-root .steps-input-item-root {
@@ -350,6 +377,7 @@
   // tips
   #posts_new .form .form-group.tips-group {
     padding: 0 12px;
+    margin: 8px 0;
   }
   #posts_new .form .form-group.tips-group .text-labeled-input .input {
     font-size: 14px;
@@ -359,6 +387,7 @@
   // reasons
   #posts_new .form .form-group.reasons-group {
     padding: 0 12px;
+    margin: 8px 0;
   }
   #posts_new .form .form-group.reasons-group .text-labeled-input .input {
     font-size: 14px;
