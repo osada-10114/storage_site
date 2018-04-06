@@ -13,13 +13,13 @@
     <div class="recommend-images-header-inner">
       <div class="image-recommend-list">
         <div class="image-recommend-list-content">
-          <a class="image-list-img" href="/posts/2000" style="height: 320px; background: rgb(255, 255, 255);">
+          <a class="image-list-img" href="/posts/200" style="height: 320px; background: rgb(255, 255, 255);">
             <div class="image-list-title"><p>壁面に収納スペースを確保！<br>ワイヤーラック</p></div>
             <img alt="壁面に収納スペースを確保！ワイヤーラック" class="image-list-img" src="kitchen.jpeg" style="height: 320px; background: rgb(230, 230, 230); position: absolute; top: 0px; left: 0px; width: 320px; z-index: 1; display: block;">
           </a>
         </div>
         <div class="image-recommend-list-content">
-          <a class="image-list-img" href="/posts/2001" style="height: 320px; background: rgb(255, 255, 255);">
+          <a class="image-list-img" href="/posts/201" style="height: 320px; background: rgb(255, 255, 255);">
             <div class="image-list-title">
               <p>散らかった靴箱もスッキリ！<br>シューズハンガー</p>
             </div>
@@ -27,7 +27,7 @@
           </a>
         </div>
         <div class="image-recommend-list-content">
-          <a class="image-list-img" href="/posts/2002" style="height: 320px; background: rgb(255, 255, 255);">
+          <a class="image-list-img" href="/posts/202" style="height: 320px; background: rgb(255, 255, 255);">
             <div class="image-list-title">
               <p>セリア板目表紙を仕切りに！<br>きっちり収納♪</p>
             </div>
@@ -60,7 +60,7 @@
                       <p><%= new_post.post_name %></p>
                     </div>
                     <div class="list-explanation">
-                      <%= new_post.explanation %>
+                      <%= truncate(new_post.explanation, length: 15) %>
                     </div>
                   </div>
                   <div class="list-title sd-only">
@@ -99,7 +99,7 @@
                   <p><%= post.post_name %></p>
                 </div>
                 <div class="list-explanation">
-                  <%= post.explanation %>
+                  <%= truncate(post.explanation, length: 15) %>
                 </div>
               </div>
               <div class="list-title sd-only">

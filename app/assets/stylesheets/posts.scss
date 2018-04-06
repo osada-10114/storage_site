@@ -300,23 +300,32 @@
   }
   #images_show .content .steps ol li {
     padding: 8px 0;
-    border-bottom: 1px solid #f1f1f2; 
-  }
-  #images_show .content .steps ol li .step_image {
-    display: inline-block;
-    line-height: 1.7;
-    margin-right: 60px;
+    border-bottom: 1px solid #f1f1f2;
+    display: -webkit-box; 
   }
   #images_show .content .steps ol li .sort_order {
-    display: inline;
+    vertical-align: middle;
     font-weight: bold;
+    text-align: left;
     line-height: 1.7;
     width: 30px;
   }
   #images_show .content .steps ol li .body {
-    display: inline;
+    -webkit-box-flex: 1;
     line-height: 1.7;
   }
+  #images_show .content .steps ol li .step_image {
+    float: right;
+    line-height: 1.7;
+    margin-left: 10px;
+    vertical-align: top;
+  }
+  #images_show .content .steps ol li span {
+    display: block;
+    word-break: break-word;
+    overflow-y: hidden;
+  }
+  
 
   // tips
   #images_show .content .tips {
