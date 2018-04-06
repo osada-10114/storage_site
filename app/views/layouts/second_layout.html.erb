@@ -4,12 +4,9 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
   </head>
   <body>
-    <%= render 'layouts/header' %>
-    <div class="main">
-    	<%= yield %>
-  	</div>
-    <%= render "layouts/footer2" %>
+    <%= yield %>
   </body>
 </html>

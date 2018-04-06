@@ -1,4 +1,10 @@
 <% provide(:title, "トップ") %>
 <div class="top">
-	<h1><%= link_to "教えて！みんなの収納術", posts_url, class: "color_01" %></h1>
+	<%= image_tag("top.jpg") %>
+	<div class="txtbox">
+		<p class="txt color_01">教えて！みんなの収納術</p>
+		<%= link_to(posts_path, class: "enter") do %>
+			<p class="entertxt" style="margin: 0;">ENTER</p>
+		<% end %>
+	</div>
 </div>
