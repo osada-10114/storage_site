@@ -36,4 +36,10 @@ class UsersController < ApplicationController
       end
     end
 
+    def authenticate_user!
+      unless user_signed_in?
+        flash[:notice] = "ログインが必要です"
+        redirect_to new_user_session_path
+      end
+    end
 end
