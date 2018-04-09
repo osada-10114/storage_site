@@ -80,6 +80,26 @@
   }
 
 
+  // home/index.html
+
+
+  .top .txtbox {
+    top: 30%;
+  }
+  .top .txtbox .txt-sd {
+    margin-bottom: 40px;
+    font-size: 3.75rem;
+    font-weight: 600;
+    line-height: 1;
+    text-shadow: 2px 5px 3px #000000;
+  }
+  .top .txtbox .enter {
+    width: 100%;
+    border: 1px solid hsla(0, 0%, 100%, 1);
+    background-color: hsla(0, 0%, 100%, 0.4)
+  }
+
+
   // posts/index.html
 
 
